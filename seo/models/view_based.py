@@ -19,7 +19,6 @@ class ViewSeo(SeoTagsMixin, BaseSeoModel):
     Attrs:
         view (CharField): custom view name
     """
-    SEO_IMAGE_FIELD = 'image'
 
     view = models.CharField(
         pgettext_lazy("View seo", "View"),

@@ -8,8 +8,6 @@ from ..querysets import ModelInstanceSeoQuerySet
 from ..mixins.models import SeoTagsMixin
 from .. import settings
 
-SEO_MODELS = settings.SEO_MODELS
-
 __all__ = (
     'ModelInstanceSeo',
 )
@@ -32,7 +30,7 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         help_text=pgettext_lazy("Model instance seo",
                                 "Please select the type (model) "
                                 "for the relation, you want to build."),
-        limit_choices_to={'model__in': SEO_MODELS},
+        limit_choices_to={'model__in': settings.SEO_MODELS},
         on_delete=models.CASCADE
     )
     object_id = models.CharField(

@@ -17,8 +17,6 @@ __all__ = (
     'BaseSeoModel',
 )
 
-SEO_IMAGE_EXTENSIONS = SEO_IMAGE_EXTENSIONS
-
 
 class BaseSeoModel(models.Model):
     """
@@ -93,7 +91,6 @@ class BaseSeoModel(models.Model):
     class Meta:
         abstract = True
 
-    
     def delete(self, *args, **kwargs):
         super().delete(*args, **kwargs)
         self.image.delete(save=False)
