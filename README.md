@@ -4,12 +4,18 @@ This app allows you to add meta tags and OpenGraph properties to your HTML respo
 
 ## Installation
 
-Update INSTALLED_APPS
+Install with pip:
+
+```python
+$ pip install django-ok-seo
+```
+
+Update INSTALLED_APPS:
 
 ```python
 INSTALLED_APPS = [
     ...
-    'ok-seo',
+    'seo',
     'modeltranslation',  # optional
     ...
 ]
@@ -130,6 +136,7 @@ Your templates
 ### *.html
 
 ```html
+{% load seo %}
 <head>
     <meta charset="UTF-8">
     {% get_seo_data seo %}

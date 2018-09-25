@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-pkj_name = 'ok-seo'
+pkj_name = 'seo'
 
 with open('requirements.txt') as f:
     requires = f.read().splitlines()
@@ -14,7 +14,7 @@ setup(
     author='Oleg Kleschunov',
     author_email='igorkleschunov@gmail.com',
     url='https://github.com/LowerDeez/ok-seo',
-    packages=[pkj_name] + [pkj_name + '.' + x for x in find_packages(pkj_name)],,
+    packages=[pkj_name] + [pkj_name + '.' + x for x in find_packages(pkj_name)],
     include_package_data=True,
     license='MIT',
     install_requires=requires,
