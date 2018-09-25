@@ -45,6 +45,7 @@ __pycache__
 bower_components
 node_modules
 htmlcov
+env
 
 # Files to ignore
 .coverage
