@@ -9,7 +9,8 @@ from ..settings import (
     SEO_DEFAULT_IMAGE,
     SEO_IMAGE_HEIGHT,
     SEO_IMAGE_WIDTH,
-    SEO_SITE_NAME
+    SEO_SITE_NAME,
+    SEO_FB_APP_ID
 )
 
 __all__ = (
@@ -52,9 +53,7 @@ class SeoTagsMixin:
         """
         Return facebook app id
         """
-        if hasattr(self, 'facebook_app_id'):
-            return self.facebook_app_id
-        return ''
+        return getattr(self, 'facebook_app_id', SEO_FB_APP_ID)
 
     def get_meta_image_field(self):
         """

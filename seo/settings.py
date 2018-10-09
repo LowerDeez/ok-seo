@@ -45,3 +45,6 @@ SEO_OG_TYPES = getattr(django_setting, 'SEO_OG_TYPES', DEFAULT_OBJECT_TYPES)
 
 # choices of twitter card types
 SEO_TWITTER_TYPES = getattr(django_setting, 'SEO_TWITTER_TYPES', DEFAULT_TWITTER_TYPES)
+
+# facebook app id
+SEO_FB_APP_ID = getattr(django_setting, 'SEO_FB_APP_ID', '')

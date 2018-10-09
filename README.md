@@ -10,6 +10,13 @@ Install with pip:
 $ pip install django-ok-seo
 ```
 
+If you want to make seo models translatable, you need to install [django-modeltranslation](https://github.com/deschler/django-modeltranslation) package. After that run:
+```python
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+to create new feelds in seo models for each language.
+
 Update INSTALLED_APPS:
 
 ```python
@@ -77,6 +84,7 @@ DEFAULT_TWITTER_TYPES = (
     ('app', pgettext_lazy('Twitter card types', 'App')),
 )
 ```
+`SEO_FB_APP_ID` - Common Facebook application id. Also, You can set custom id in facebook_app_id field for each seo instance.
 
 TODO:
 
@@ -84,6 +92,7 @@ TODO:
 
 ### Basic example to use:
 
+Admin inline:
 
 ```python
 # admin.py
@@ -99,6 +108,7 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ModelInstanceSeoInline]
 ```
 
+Views:
 ```python
 # views.py
 
@@ -131,7 +141,7 @@ class ArticleDetailViewJinja(ModelInstanceViewSeoMixin, DetailView):
     pk_url_kwarg = 'id'
 ```
 
-Your templates
+Your templates:
 
 ### *.html
 
@@ -155,3 +165,39 @@ Your templates
 ### View seo
 
 To add some meta tags to your view, just go to `/admin/seo/viewseo/add/`.
+
+### Inheritance
+
+You can inherit your models from `SeoTagsMixin` and override necessary methods to set custom seo data for your objects.
+
+```python
+from django.db import models
+
+from seo.mixins.models import SeoTagsMixin
+
+
+class Article(SeoTagsMixin, models.Model):
+    preview = models.ImageField()
+    short_description = models.TextField(max_length=1000)
+    ...
+
+    def get_meta_description(self) -> str:
+        """
+        Return meta description
+        """
+        return self.short_description
+
+    def get_meta_image_field(self):
+        """
+        Return image field instance to get image url
+        """
+        return self.preview
+```
+And in a template for your DetailView, you can use:
+```html
+<head>
+    <meta charset="UTF-8">
+    {% get_seo_data object %}
+</head>
+```
+where object is your default `context_object_name `.
