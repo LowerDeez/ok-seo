@@ -6,12 +6,12 @@ This app allows you to add meta tags and OpenGraph properties to your HTML respo
 
 Install with pip:
 
-```python
+```shell
 $ pip install django-ok-seo
 ```
 
 If you want to make seo models translatable, you need to install [django-modeltranslation](https://github.com/deschler/django-modeltranslation) package. After that run:
-```python
+```shell
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
@@ -29,7 +29,7 @@ INSTALLED_APPS = [
 ```
 
 Make migrations
-```python
+```shell
 $ python manage.py migrate
 ```
 
@@ -85,6 +85,17 @@ DEFAULT_TWITTER_TYPES = (
 )
 ```
 `SEO_FB_APP_ID` - Common Facebook application id. Also, You can set custom id in facebook_app_id field for each seo instance.
+
+`SEO_HTML_ADMIN_WIDGET` -  dictionary with default widget for `top_text` and `bottom_text` text fields in django admin interface.
+
+For example:
+
+```python
+SEO_HTML_ADMIN_WIDGET = {
+    'widget': 'TinyMCE',
+    'widget_path': 'tinymce.widgets'
+}
+```
 
 TODO:
 
@@ -151,15 +162,39 @@ Your templates:
     <meta charset="UTF-8">
     {% get_seo_data seo %}
 </head>
+
+<!-- Optional: -->
+...
+<h1>{{ seo.h1 }}</h1>
+...
+<div id='seo_top'>
+    {{ seo.top_text|safe }}
+</div>
+...
+<div id='seo_bottom'>
+    {{ seo.bottom_text|safe }}
+</div>
 ```
 
 ### *.jinja
 
-```html
+```django
 <head>
     <meta charset="UTF-8">
     {{ get_jinja_seo_data(seo, request) }}
 </head>
+...
+<!-- Optional: -->
+...
+<h1>{{ seo.h1 }}</h1>
+...
+<div id='seo_top'>
+    {{ seo.top_text|safe }}
+</div>
+...
+<div id='seo_bottom'>
+    {{ seo.bottom_text|safe }}
+</div>
 ```
 
 ### View seo

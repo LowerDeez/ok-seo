@@ -48,3 +48,5 @@ SEO_TWITTER_TYPES = getattr(django_setting, 'SEO_TWITTER_TYPES', DEFAULT_TWITTER
 
 # facebook app id
 SEO_FB_APP_ID = getattr(django_setting, 'SEO_FB_APP_ID', '')
+
+SEO_HTML_ADMIN_WIDGET = getattr(django_setting, 'SEO_HTML_ADMIN_WIDGET', {})

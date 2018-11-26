@@ -23,7 +23,6 @@ class BaseSeoModel(models.Model):
     Base Seo model
 
     Attrs:
-        facebook_app_id (CharField): facebook application id
         object_type (CharField): object type
         twitter_type (CharField): twitter type
         index (CharField): robots index value
@@ -33,12 +32,10 @@ class BaseSeoModel(models.Model):
         description (CharField): meta description
         image (VersatileImageField): OG image
         alt (CharField): alt text for image
+        h1 (CharField): H1 title for page
+        top_text (TextField): text field for top part of the page
+        bottom_text (TextField): text field for bottom part of the page
     """
-    facebook_app_id = models.CharField(
-        pgettext_lazy('Base seo model', 'Facebook app id'),
-        max_length=40,
-        blank=True
-    )
     object_type = models.CharField(
         pgettext_lazy('Base seo model', 'Open graph type'),
         max_length=40,
@@ -86,6 +83,27 @@ class BaseSeoModel(models.Model):
         pgettext_lazy("Base seo model", "Alt"),
         max_length=255,
         blank=True
+    )
+    h1 = models.CharField(
+        pgettext_lazy("Base seo model", "H1 title"),
+        max_length=255,
+        blank=True
+    )
+    top_text = models.TextField(
+        pgettext_lazy("Base seo model", "Page top text for seo"),
+        blank=True,
+        help_text=pgettext_lazy(
+            "Base seo model", 
+            "Can be usefull for some static pages or some objects (like product category)."
+        ),
+    )
+    bottom_text = models.TextField(
+        pgettext_lazy("Base seo model", "Page top text for seo"),
+        blank=True,
+        help_text=pgettext_lazy(
+            "Base seo model", 
+            "Can be usefull for some static pages or some objects (like product category)."
+        ),
     )
 
     class Meta:

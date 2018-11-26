@@ -5,6 +5,7 @@ from django.utils.translation import pgettext_lazy
 from .base_fields import base_seo_fields
 from .filters import ContentObjectListFilter, SeoModelsFilter
 from .utils import get_admin_base_class
+from .mixins import AdminRichTextFieldMixin
 from ..models.instance_based import ModelInstanceSeo
 from ..utils import admin_change_url
 
@@ -14,7 +15,7 @@ __all__ = (
 
 
 @admin.register(ModelInstanceSeo)
-class ModelInstanceSeoAdmin(get_admin_base_class()):
+class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     """
     Model instance seo admin interface
     """

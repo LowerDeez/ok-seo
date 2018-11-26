@@ -2,9 +2,7 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.template import Context, Template
 
-from django_dynamic_fixture import G
-
-from apps.seo.models.view_based import ViewSeo
+from ..models.view_based import ViewSeo
 
 __all__ = (
     'GetSeoDataTemplateTagTest',
@@ -17,7 +15,12 @@ class GetSeoDataTemplateTagTest(TestCase):
         self.factory = RequestFactory()
 
     def test_rendered(self):
-        seo = G(ViewSeo)
+        seo = ViewSeo(
+            title='1',
+            description='1',
+            keywords='1,2,3',
+            object_type='article'
+        )
         request = self.factory.get('/')
         context = Context({'seo': seo}, {'request': request})
         context.request = request

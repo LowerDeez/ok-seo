@@ -53,7 +53,7 @@ class SeoTagsMixin:
         """
         Return facebook app id
         """
-        return getattr(self, 'facebook_app_id', SEO_FB_APP_ID)
+        return SEO_FB_APP_ID
 
     def get_meta_image_field(self):
         """

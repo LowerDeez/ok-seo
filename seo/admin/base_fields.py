@@ -4,7 +4,6 @@ __all__ = (
 
 
 base_seo_fields = (
-    'facebook_app_id',
     'object_type',
     'twitter_type',
     'index',
@@ -13,5 +12,8 @@ base_seo_fields = (
     'keywords',
     'description',
     'image', 
-    'alt'
+    'alt',
+    'h1',
+    'top_text',
+    'bottom_text'
 )
