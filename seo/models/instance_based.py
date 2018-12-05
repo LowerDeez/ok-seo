@@ -50,3 +50,33 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
 
     def __str__(self) -> str:
         return self.title
+
+    def is_inherits(self):
+        """
+        Checks that content object inherits SeoTagsMixin
+        """
+        return isinstance(self.content_object, SeoTagsMixin)
+
+    def get_meta_title(self) -> str:
+        """
+        Return meta title
+        """
+        if self.is_inherits():
+            return getattr(self.content_object, 'get_meta_title')()
+        return super().get_meta_title()
+
+    def get_meta_description(self) -> str:
+        """
+        Return meta description
+        """
+        if self.is_inherits():
+            return getattr(self.content_object, 'get_meta_description')()
+        return super().get_meta_description()
+
+    def get_h1_title(self) -> str:
+        """
+        Return  h1 title
+        """
+        if self.is_inherits():
+            return getattr(self.content_object, 'get_h1_title')()
+        return super().get_h1_title()

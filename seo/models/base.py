@@ -4,7 +4,9 @@ from django.utils.translation import pgettext_lazy
 
 from ..const import (
     INDEX_CHOICES,
-    FOLLOW_CHOICES
+    FOLLOW_CHOICES,
+    DEFAULT_OBJECT_TYPES,
+    DEFAULT_TWITTER_TYPES
 )
 from ..settings import (
     SEO_OG_TYPES,
@@ -41,12 +43,14 @@ class BaseSeoModel(models.Model):
         max_length=40,
         blank=True,
         choices=SEO_OG_TYPES,
+        default=DEFAULT_OBJECT_TYPES[0][0]
     )
     twitter_type = models.CharField(
         pgettext_lazy('Base seo model', 'Twitter type'),
         max_length=40,
         blank=True,
         choices=SEO_TWITTER_TYPES,
+        default=DEFAULT_TWITTER_TYPES[0][0]
     )
     index = models.CharField(
         pgettext_lazy('Base seo model', 'Index robots value'),

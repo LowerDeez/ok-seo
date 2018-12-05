@@ -11,8 +11,8 @@ __all__ = (
 DEFAULT_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png']
 
 DEFAULT_OBJECT_TYPES = (
+    ('article', pgettext_lazy('OG types', 'Article')),
     ('website', pgettext_lazy('OG types', 'Website')),
-    ('article', pgettext_lazy('OG types', 'Article'))
 )
 
 DEFAULT_TWITTER_TYPES = (

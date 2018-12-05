@@ -29,25 +29,19 @@ class SeoTagsMixin:
         """
         Return meta title
         """
-        if hasattr(self, 'title'):
-            return self.title
-        return ''
+        return getattr(self, 'title', '')
 
     def get_meta_description(self) -> str:
         """
         Return meta description
         """
-        if hasattr(self, 'description'):
-            return self.description
-        return ''
+        return getattr(self, 'description', '')
 
     def get_meta_keywords(self) -> str:
         """
         Return meta keywords
         """
-        if hasattr(self, 'keywords'):
-            return self.keywords
-        return ''
+        return getattr(self, 'keywords', '')
 
     def get_facebook_app_id(self) -> str:
         """
@@ -77,17 +71,13 @@ class SeoTagsMixin:
         """
         Return alternative text for image
         """
-        if hasattr(self, 'alt'):
-            return self.alt
-        return self.get_meta_title()
+        return getattr(self, 'alt', self.get_meta_title())
 
     def get_opengraph_type(self) -> str:
         """
         Return open graph object type
         """
-        if hasattr(self, 'object_type'):
-            return self.object_type
-        return DEFAULT_OBJECT_TYPES[0][0]
+        return getattr(self, 'object_type', DEFAULT_OBJECT_TYPES[0][0])
 
     def get_twitter_type(self) -> str:
         """
@@ -95,7 +85,25 @@ class SeoTagsMixin:
         """
         if hasattr(self, 'twitter_type'):
             return self.twitter_type
-        return DEFAULT_TWITTER_TYPES[0][0]
+        return getattr(self, 'twitter_type', DEFAULT_TWITTER_TYPES[0][0])
+
+    def get_h1_title(self) -> str:
+        """
+        Return  h1 title
+        """
+        return getattr(self, 'h1', '')
+
+    def get_top_text(self) -> str:
+        """
+        Return  top text
+        """
+        return getattr(self, 'top_text', '')
+
+    def get_bottom_text(self) -> str:
+        """
+        Return bottom text
+        """
+        return getattr(self, 'bottom_text', '')
 
     def as_meta(self, request) -> Dict[str, str]:
         """
