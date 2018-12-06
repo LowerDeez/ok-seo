@@ -1,4 +1,8 @@
 <!--Base-->
+{% if robots %}
+    <meta name="robots" content="{{ robots }}">
+{% endif %}
+
 {% if title %}
     <title>{{ title }}</title>
 {% endif %}

@@ -25,6 +25,16 @@ class SeoTagsMixin:
 
     SEO_IMAGE_FIELD = 'image'
 
+    def get_robots_content(self) -> str:
+        """
+        Return robots content
+        """
+        index = getattr(self, 'index', None)
+        follow = getattr(self, 'follow', None)
+        if index and follow:
+            return f'{index}, {follow}'
+        return ''
+
     def get_meta_title(self) -> str:
         """
         Return meta title
@@ -110,6 +120,7 @@ class SeoTagsMixin:
         Return dict available to render meta tags
         """
         meta = {
+            'robots': self.get_robots_content(),
             'title': self.get_meta_title(),
             'description': self.get_meta_description(),
             'keywords': self.get_meta_keywords(),

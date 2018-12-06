@@ -57,12 +57,14 @@ class BaseSeoModel(models.Model):
         max_length=15,
         blank=True,
         choices=INDEX_CHOICES,
+        default=INDEX_CHOICES[0][0]
     )
     follow = models.CharField(
         pgettext_lazy('Base seo model', 'Follow robots value'),
         max_length=15,
         blank=True,
         choices=FOLLOW_CHOICES,
+        default=FOLLOW_CHOICES[0][0]
     )
     title = models.CharField(
         pgettext_lazy("Base seo model", "Seo Title"),
@@ -102,7 +104,7 @@ class BaseSeoModel(models.Model):
         ),
     )
     bottom_text = models.TextField(
-        pgettext_lazy("Base seo model", "Page top text for seo"),
+        pgettext_lazy("Base seo model", "Page bottom text for seo"),
         blank=True,
         help_text=pgettext_lazy(
             "Base seo model", 
