@@ -19,16 +19,23 @@
 {% if facebook_app_id %}
     <meta property="fb:app_id" content="{{ facebook_app_id }}"/> 
 {% endif %}
+
 <meta property="og:locale" content="{{ og_locale }}"/>
-<meta property="og:type" content="{{ og_type }}">
+
+{% if og_type %}
+    <meta property="og:type" content="{{ og_type }}">
+{% endif %}
+
 {% if title %}
     <meta property="og:title" content="{{ title }}">
 {% endif %}
+
 {% if description %}
     <meta property="og:description" content="{{ description }}">
 {% endif %}
+
 <meta property="og:site_name" content="{{ site_name }}"/>
-<meta property="og:url" content="{{ url }}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
 
 {% if image %}
     <meta property="og:image" content="{{ image }}">
@@ -40,15 +47,21 @@
 {% endif %}
 
 <!--Twitter card-->
-<meta name="twitter:card" content="{{ twitter_type }}">
+{% if twitter_type %}
+    <meta name="twitter:card" content="{{ twitter_type }}">
+{% endif %}
+
 {% if title %}
     <meta name="twitter:title" content="{{ title }}">
 {% endif %}
+
 {% if description %}
     <meta name="twitter:description" content="{{ description }}">
 {% endif %}
+
 {% if image %}
     <meta name="twitter:image" content="{{ image }}">
 {% endif %}
+
 <meta name="twitter:site" content="{{ site_name }}">
 <meta name="twitter:domain" content="{{ site_name }}"/>

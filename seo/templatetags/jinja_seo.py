@@ -1,4 +1,6 @@
 from django.apps import apps
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.translation import to_locale, get_language
 
 
 if apps.is_installed('django_jinja'):
@@ -23,4 +25,8 @@ if apps.is_installed('django_jinja'):
         """
         if isinstance(obj, SeoTagsMixin):
             return obj.as_meta(request)
-        return {}
+        return {
+            'request': request,
+            'og_locale': to_locale(get_language()),
+            'site_name': get_current_site(request),
+        }

@@ -129,9 +129,9 @@ class SeoTagsMixin:
             'og_type': self.get_opengraph_type(),
             'site_name': SEO_SITE_NAME or get_current_site(request),
             'og_locale': to_locale(get_language()),
-            'url': request.build_absolute_uri(),
 
             'twitter_type': self.get_twitter_type(),
+            'request': request
         }
         image = self.get_meta_image()
         if image:

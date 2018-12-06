@@ -1,4 +1,6 @@
+from django.contrib.sites.shortcuts import get_current_site
 from django.template import Library
+from django.utils.translation import to_locale, get_language
 
 from ..mixins.models import SeoTagsMixin
 
@@ -13,6 +15,8 @@ def get_seo_data(context, seo):
     """
     if isinstance(seo, SeoTagsMixin):
         return seo.as_meta(context.request)
-    return {}
-
-
+    return {
+        'request': context.request,
+        'og_locale': to_locale(get_language()),
+        'site_name': get_current_site(context.request),
+    }
