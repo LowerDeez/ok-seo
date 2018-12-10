@@ -61,7 +61,7 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         """
         Return meta title
         """
-        if self.is_inherits():
+        if not self.title and self.is_inherits():
             return getattr(self.content_object, 'get_meta_title')()
         return super().get_meta_title()
 
@@ -69,7 +69,7 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         """
         Return meta description
         """
-        if self.is_inherits():
+        if not self.description and self.is_inherits():
             return getattr(self.content_object, 'get_meta_description')()
         return super().get_meta_description()
 
@@ -77,6 +77,6 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         """
         Return  h1 title
         """
-        if self.is_inherits():
+        if not self.h1 and self.is_inherits():
             return getattr(self.content_object, 'get_h1_title')()
         return super().get_h1_title()
