@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-25 08:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+#: seo/admin/filters.py:13
+msgid "Content object"
+msgstr ""
+
+#: seo/admin/filters.py:27
+msgid "Exists"
+msgstr ""
+
+#: seo/admin/filters.py:28
+msgid "Doesn't exist"
+msgstr ""
+
+#: seo/admin/filters.py:53
+msgid "Seo model"
+msgstr ""
+
+#: seo/admin/model_instance_seo.py:30
+msgctxt "Model Instance seo admin"
+msgid "Meta"
+msgstr ""
+
+#: seo/admin/model_instance_seo.py:57
+msgctxt "Model instance seo admin"
+msgid "Content Object"
+msgstr ""
+
+#: seo/admin/view_seo.py:28
+msgctxt "View seo admin"
+msgid "Meta"
+msgstr ""
+
+#: seo/apps.py:7
+msgid "Seo"
+msgstr ""
+
+#: seo/const.py:14
+msgctxt "OG types"
+msgid "Article"
+msgstr ""
+
+#: seo/const.py:15
+msgctxt "OG types"
+msgid "Website"
+msgstr ""
+
+#: seo/const.py:19
+msgctxt "Twitter card types"
+msgid "Summary Card"
+msgstr ""
+
+#: seo/const.py:20
+msgctxt "Twitter card types"
+msgid "Summary Card with Large Image"
+msgstr ""
+
+#: seo/const.py:21
+msgctxt "Twitter card types"
+msgid "Player"
+msgstr ""
+
+#: seo/const.py:22
+msgctxt "Twitter card types"
+msgid "App"
+msgstr ""
+
+#: seo/const.py:27
+msgctxt "Index choices"
+msgid "Index"
+msgstr ""
+
+#: seo/const.py:28
+msgctxt "Index choices"
+msgid "No index"
+msgstr ""
+
+#: seo/const.py:33
+msgctxt "Follow choices"
+msgid "Follow"
+msgstr ""
+
+#: seo/const.py:34
+msgctxt "Follow choices"
+msgid "No follow"
+msgstr ""
+
+#: seo/models/base.py:42
+msgctxt "Base seo model"
+msgid "Open graph type"
+msgstr ""
+
+#: seo/models/base.py:49
+msgctxt "Base seo model"
+msgid "Twitter type"
+msgstr ""
+
+#: seo/models/base.py:56
+msgctxt "Base seo model"
+msgid "Index robots value"
+msgstr ""
+
+#: seo/models/base.py:63
+msgctxt "Base seo model"
+msgid "Follow robots value"
+msgstr ""
+
+#: seo/models/base.py:70
+msgctxt "Base seo model"
+msgid "Seo Title"
+msgstr ""
+
+#: seo/models/base.py:75
+msgctxt "Base seo model"
+msgid "Meta Keywords"
+msgstr ""
+
+#: seo/models/base.py:79
+msgctxt "Base seo model"
+msgid "Meta Description"
+msgstr ""
+
+#: seo/models/base.py:83
+msgctxt "Base seo model"
+msgid "Изображение"
+msgstr ""
+
+#: seo/models/base.py:89
+msgctxt "Base seo model"
+msgid "Alt"
+msgstr ""
+
+#: seo/models/base.py:94
+msgctxt "Base seo model"
+msgid "H1 title"
+msgstr ""
+
+#: seo/models/base.py:99
+msgctxt "Base seo model"
+msgid "Page top text for seo"
+msgstr ""
+
+#: seo/models/base.py:103 seo/models/base.py:111
+msgctxt "Base seo model"
+msgid ""
+"Can be usefull for some static pages or some objects (like product category)."
+msgstr ""
+
+#: seo/models/base.py:107
+msgctxt "Base seo model"
+msgid "Page bottom text for seo"
+msgstr ""
+
+#: seo/models/instance_based.py:29
+msgctxt "Model instance seo"
+msgid "Content Type"
+msgstr ""
+
+#: seo/models/instance_based.py:31
+msgctxt "Model instance seo"
+msgid "Please select the type (model) for the relation, you want to build."
+msgstr ""
+
+#: seo/models/instance_based.py:37
+msgctxt "Model instance seo"
+msgid "Object Primary Key"
+msgstr ""
+
+#: seo/models/instance_based.py:40
+msgctxt "Model instance seo"
+msgid "Please enter the ID of the related object."
+msgstr ""
+
+#: seo/models/instance_based.py:48 seo/models/instance_based.py:49
+msgctxt "Model instance seo"
+msgid "Model instance seo"
+msgstr ""
+
+#: seo/models/view_based.py:24
+msgctxt "View seo"
+msgid "View"
+msgstr ""
+
+#: seo/models/view_based.py:31 seo/models/view_based.py:32
+msgctxt "Model instance seo"
+msgid "View seo"
+msgstr ""
