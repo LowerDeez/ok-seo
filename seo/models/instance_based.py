@@ -80,3 +80,12 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         if not self.h1 and self.is_inherits():
             return getattr(self.content_object, 'get_h1_title')()
         return super().get_h1_title()
+
+    def get_meta_image_field(self):
+        """
+        Return image field instance to get image url
+        """
+        field = getattr(self, self.SEO_IMAGE_FIELD, None)
+        if not field:
+            field = getattr(self.content_object, self.SEO_IMAGE_FIELD, None)
+        return field

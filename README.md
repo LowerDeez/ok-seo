@@ -236,3 +236,29 @@ And in a template for your DetailView, you can use:
 </head>
 ```
 where object is your default `context_object_name `.
+
+Also, you can use this way with `ModelInstanceViewSeoMixin` to still use `ModelInstanceSeo`, but get some data from a content object. To reach this goal, you need to override next methods:
+```python
+def get_meta_title(self) -> str:
+    """
+    Return meta title
+    """
+    return _('{} < Some super title').format(str(self))
+
+def get_meta_description(self) -> str:
+    """
+    Return meta description
+    """
+    return _(
+        '{} ➤ Wow! '
+        '✔ Amazing! '
+        '❖ Marvelous!'
+    ).format(str(self))
+
+def get_h1_title(self) -> str:
+    """
+    Return  h1 title
+    """
+    return str(self)
+```
+> If you want to get image from the content object, you may left the image field empty in a `ModelInstanceSeo` instance. If your image field has some specific name, you need to define a property with a name `image`.  
