@@ -14,8 +14,7 @@ class AdminRichTextFieldMixin:
     Convert given text fields to rich text fields
     """
     richtext_fields = [
-        'top_text',
-        'bottom_text'
+        'seo_text'
     ]
 
     def get_richtext_fields(self):
