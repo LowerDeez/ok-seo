@@ -11,9 +11,10 @@ base_seo_fields = (
     'title',
     'keywords',
     'description',
-    'image', 
+    'image',
+    'width',
+    'height',
     'alt',
     'h1',
-    'top_text',
-    'bottom_text'
+    'seo_text'
 )

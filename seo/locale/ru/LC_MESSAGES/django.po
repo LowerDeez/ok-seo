@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 08:45+0000\n"
+"POT-Creation-Date: 2019-01-21 09:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: seo/admin/filters.py:13
 msgid "Content object"
 msgstr ""
@@ -104,70 +105,75 @@ msgctxt "Follow choices"
 msgid "No follow"
 msgstr ""
 
-#: seo/models/base.py:42
+#: seo/models/base.py:44
 msgctxt "Base seo model"
 msgid "Open graph type"
 msgstr ""
 
-#: seo/models/base.py:49
+#: seo/models/base.py:51
 msgctxt "Base seo model"
 msgid "Twitter type"
 msgstr ""
 
-#: seo/models/base.py:56
+#: seo/models/base.py:58
 msgctxt "Base seo model"
 msgid "Index robots value"
 msgstr ""
 
-#: seo/models/base.py:63
+#: seo/models/base.py:65
 msgctxt "Base seo model"
 msgid "Follow robots value"
 msgstr ""
 
-#: seo/models/base.py:70
+#: seo/models/base.py:72
 msgctxt "Base seo model"
 msgid "Seo Title"
 msgstr ""
 
-#: seo/models/base.py:75
+#: seo/models/base.py:77
 msgctxt "Base seo model"
 msgid "Meta Keywords"
 msgstr ""
 
-#: seo/models/base.py:79
+#: seo/models/base.py:81
 msgctxt "Base seo model"
 msgid "Meta Description"
 msgstr ""
 
-#: seo/models/base.py:83
+#: seo/models/base.py:85
 msgctxt "Base seo model"
-msgid "Изображение"
+msgid "Image"
 msgstr ""
 
-#: seo/models/base.py:89
+#: seo/models/base.py:91
 msgctxt "Base seo model"
-msgid "Alt"
+msgid "Image width"
 msgstr ""
 
-#: seo/models/base.py:94
+#: seo/models/base.py:95
 msgctxt "Base seo model"
-msgid "H1 title"
+msgid "Image height"
 msgstr ""
 
 #: seo/models/base.py:99
 msgctxt "Base seo model"
-msgid "Page top text for seo"
+msgid "Image alt text"
 msgstr ""
 
-#: seo/models/base.py:103 seo/models/base.py:111
+#: seo/models/base.py:104
+msgctxt "Base seo model"
+msgid "H1 title"
+msgstr ""
+
+#: seo/models/base.py:109
+msgctxt "Base seo model"
+msgid "Seo text for page"
+msgstr ""
+
+#: seo/models/base.py:113
 msgctxt "Base seo model"
 msgid ""
-"Can be usefull for some static pages or some objects (like product category)."
-msgstr ""
-
-#: seo/models/base.py:107
-msgctxt "Base seo model"
-msgid "Page bottom text for seo"
+"Can be useful for some static pages or some objects (like product category)."
 msgstr ""
 
 #: seo/models/instance_based.py:29

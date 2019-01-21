@@ -11,7 +11,9 @@ from ..const import (
 from ..settings import (
     SEO_OG_TYPES,
     SEO_TWITTER_TYPES, 
-    SEO_IMAGE_EXTENSIONS
+    SEO_IMAGE_EXTENSIONS,
+    SEO_IMAGE_WIDTH,
+    SEO_IMAGE_HEIGHT
 )
 from ..utils import image_upload_to
 
@@ -67,48 +69,48 @@ class BaseSeoModel(models.Model):
         default=FOLLOW_CHOICES[0][0]
     )
     title = models.CharField(
-        pgettext_lazy("Base seo model", "Seo Title"),
+        pgettext_lazy('Base seo model', 'Seo Title'),
         max_length=255,
         blank=True
     )
     keywords = models.TextField(
-        pgettext_lazy("Base seo model", "Meta Keywords"),
+        pgettext_lazy('Base seo model', 'Meta Keywords'),
         blank=True,
     )
     description = models.TextField(
-        pgettext_lazy("Base seo model", "Meta Description"),
+        pgettext_lazy('Base seo model', 'Meta Description'),
         blank=True,
     )
     image = models.ImageField(
-        pgettext_lazy("Base seo model", 'Изображение'),
+        pgettext_lazy('Base seo model', 'Image'),
         upload_to=image_upload_to,
         blank=True, null=True,
         validators=[FileExtensionValidator(SEO_IMAGE_EXTENSIONS)]
     )
+    width = models.PositiveIntegerField(
+        pgettext_lazy('Base seo model', 'Image width'),
+        default=SEO_IMAGE_WIDTH
+    )
+    height = models.PositiveIntegerField(
+        pgettext_lazy('Base seo model', 'Image height'),
+        default=SEO_IMAGE_HEIGHT
+    )
     alt = models.CharField(
-        pgettext_lazy("Base seo model", "Alt"),
+        pgettext_lazy('Base seo model', 'Image alt text'),
         max_length=255,
         blank=True
     )
     h1 = models.CharField(
-        pgettext_lazy("Base seo model", "H1 title"),
+        pgettext_lazy('Base seo model', 'H1 title'),
         max_length=255,
         blank=True
     )
-    top_text = models.TextField(
-        pgettext_lazy("Base seo model", "Page top text for seo"),
+    seo_text = models.TextField(
+        pgettext_lazy('Base seo model', 'Seo text'),
         blank=True,
         help_text=pgettext_lazy(
-            "Base seo model", 
-            "Can be usefull for some static pages or some objects (like product category)."
-        ),
-    )
-    bottom_text = models.TextField(
-        pgettext_lazy("Base seo model", "Page bottom text for seo"),
-        blank=True,
-        help_text=pgettext_lazy(
-            "Base seo model", 
-            "Can be usefull for some static pages or some objects (like product category)."
+            'Base seo model',
+            'Can be useful for some static pages or some objects (like product category).'
         ),
     )
 

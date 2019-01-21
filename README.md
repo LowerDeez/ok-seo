@@ -167,12 +167,8 @@ Your templates:
 ...
 <h1>{{ seo.h1 }}</h1>
 ...
-<div id='seo_top'>
-    {{ seo.top_text|safe }}
-</div>
-...
-<div id='seo_bottom'>
-    {{ seo.bottom_text|safe }}
+<div id='seo_text'>
+    {{ seo.seo_text|safe }}
 </div>
 ```
 
@@ -188,12 +184,8 @@ Your templates:
 ...
 <h1>{{ seo.h1 }}</h1>
 ...
-<div id='seo_top'>
-    {{ seo.top_text|safe }}
-</div>
-...
-<div id='seo_bottom'>
-    {{ seo.bottom_text|safe }}
+<div id='seo_text'>
+    {{ seo.seo_text|safe }}
 </div>
 ```
 

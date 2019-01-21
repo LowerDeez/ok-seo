@@ -83,6 +83,18 @@ class SeoTagsMixin:
         """
         return getattr(self, 'alt', self.get_meta_title())
 
+    def get_image_width(self) -> int:
+        """
+        Return width value for image
+        """
+        return getattr(self, 'width', SEO_IMAGE_WIDTH)
+
+    def get_image_height(self) -> int:
+        """
+        Return height value for image
+        """
+        return getattr(self, 'height', SEO_IMAGE_HEIGHT)
+
     def get_opengraph_type(self) -> str:
         """
         Return open graph object type
@@ -103,17 +115,11 @@ class SeoTagsMixin:
         """
         return getattr(self, 'h1', '')
 
-    def get_top_text(self) -> str:
+    def get_seo_text(self) -> str:
         """
         Return  top text
         """
-        return getattr(self, 'top_text', '')
-
-    def get_bottom_text(self) -> str:
-        """
-        Return bottom text
-        """
-        return getattr(self, 'bottom_text', '')
+        return getattr(self, 'seo_text', '')
 
     def as_meta(self, request) -> Dict[str, str]:
         """
@@ -139,7 +145,7 @@ class SeoTagsMixin:
                 'image': request.build_absolute_uri(image),
                 'alt': self.get_meta_image_alt(),
                 'mime_type': mimetypes.guess_type(image)[0] or 'image/jpeg',
-                'image_width': SEO_IMAGE_WIDTH,
-                'image_height': SEO_IMAGE_HEIGHT,
+                'image_width': self.get_image_width(),
+                'image_height': self.get_image_height(),
             })
         return meta
