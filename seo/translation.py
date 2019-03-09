@@ -16,8 +16,7 @@ class ModelInstanceSeoTranslationOptions(TranslationOptions):
         'description',
         'alt', 
         'h1', 
-        'top_text',
-        'bottom_text'
+        'seo_text'
     )
 
 
