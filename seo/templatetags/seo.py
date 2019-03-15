@@ -4,6 +4,10 @@ from django.utils.translation import to_locale, get_language
 
 from ..mixins.models import SeoTagsMixin
 
+__all__ = (
+    'get_seo_data',
+)
+
 register = Library()
 
 

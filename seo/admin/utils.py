@@ -9,7 +9,8 @@ from ..settings import SEO_HTML_ADMIN_WIDGET
 
 __all__ = (
     'get_admin_base_class',
-    'get_admin_inline_base_class'
+    'get_admin_inline_base_class',
+    'get_html_field_widget'
 )
 
 
@@ -48,6 +49,8 @@ def get_html_field_widget():
     """
     Return custom widget for text fields from settings
     """
+    default_widget = forms.Textarea()
+
     if SEO_HTML_ADMIN_WIDGET:
         try:
             custom_widget = getattr(
@@ -55,8 +58,8 @@ def get_html_field_widget():
                 SEO_HTML_ADMIN_WIDGET['widget']
             )
         except (ImportError, KeyError):
-            return forms.Textarea()
+            return default_widget
         else:
             return custom_widget()
 
-    return forms.Textarea()
+    return default_widget
