@@ -1,32 +1,36 @@
+from typing import Dict
+
 from django.apps import apps
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import to_locale, get_language
 
+from ..mixins.models import SeoTagsMixin
+
+__all__ = (
+    'get_jinja_seo_data',
+)
+
 
 if apps.is_installed('django_jinja'):
 
-    from typing import Dict
-
     from django_jinja import library
-
-    from ..mixins.models import SeoTagsMixin
-
-    __all__ = (
-        'jinja_seo',
-    )
-
+    import jinja2
 
     @library.global_function
     @library.render_with("seo/jinja/seo.jinja")
-    def get_jinja_seo_data(obj, request) -> Dict[str, str]:
+    @jinja2.contextfunction
+    def get_jinja_seo_data(context, obj) -> Dict[str, str]:
         """
         Renders meta data for given obj, that can be
         some instance which inherits SeoTagsMixin mixin
         """
+        request = context['request']
+
         if isinstance(obj, SeoTagsMixin):
             return obj.as_meta(request)
         return {
             'request': request,
+            'canonical': request.build_absolute_uri(),
             'og_locale': to_locale(get_language()),
             'site_name': get_current_site(request),
         }

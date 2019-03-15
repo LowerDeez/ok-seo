@@ -8,6 +8,7 @@ base_seo_fields = (
     'twitter_type',
     'index',
     'follow',
+    'canonical',
     'title',
     'keywords',
     'description',
