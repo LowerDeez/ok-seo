@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='django-ok-seo',
-    version='0.2.3',
+    version='0.2.4',
     description='Django seo app',
     long_description=open('README.md').read(),
     author='Oleg Kleschunov',
