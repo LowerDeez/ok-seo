@@ -9,7 +9,6 @@ __all__ = (
     'SEO_DEFAULT_IMAGE',
     'SEO_IMAGE_WIDTH',
     'SEO_IMAGE_HEIGHT',
-    'SEO_IMAGE_FIELD_NAME',
     'SEO_IMAGE_EXTENSIONS',
 
     'SEO_MODELS',
@@ -20,7 +19,11 @@ __all__ = (
 
     'SEO_OG_TYPES',
 
-    'SEO_TWITTER_TYPES'
+    'SEO_TWITTER_TYPES',
+
+    'SEO_FB_APP_ID',
+
+    'SEO_HTML_ADMIN_WIDGET',
 
 )
 

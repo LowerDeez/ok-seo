@@ -1,5 +1,4 @@
 from django import forms
-from django.apps import apps
 from django.db import models
 
 from .utils import get_html_field_widget

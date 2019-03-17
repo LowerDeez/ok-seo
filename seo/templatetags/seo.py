@@ -4,6 +4,10 @@ from django.utils.translation import to_locale, get_language
 
 from ..mixins.models import SeoTagsMixin
 
+__all__ = (
+    'get_seo_data',
+)
+
 register = Library()
 
 
@@ -15,8 +19,10 @@ def get_seo_data(context, seo):
     """
     if isinstance(seo, SeoTagsMixin):
         return seo.as_meta(context.request)
+    request = context.request
     return {
-        'request': context.request,
+        'request': request,
+        'canonical': request.build_absolute_uri(),
         'og_locale': to_locale(get_language()),
         'site_name': get_current_site(context.request),
     }

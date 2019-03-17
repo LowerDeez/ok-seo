@@ -68,6 +68,11 @@ class BaseSeoModel(models.Model):
         choices=FOLLOW_CHOICES,
         default=FOLLOW_CHOICES[0][0]
     )
+    canonical = models.CharField(
+        pgettext_lazy('Base seo model', 'Canonical'),
+        max_length=255,
+        blank=True
+    )
     title = models.CharField(
         pgettext_lazy('Base seo model', 'Seo Title'),
         max_length=255,

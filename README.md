@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     ...
     'seo',
     'modeltranslation',  # optional
+    'django_jinja',  # optional for jinja2 global function
     ...
 ]
 ```
@@ -177,7 +178,7 @@ Your templates:
 ```django
 <head>
     <meta charset="UTF-8">
-    {{ get_jinja_seo_data(seo, request) }}
+    {{ get_jinja_seo_data(seo) }}
 </head>
 ...
 <!-- Optional: -->
