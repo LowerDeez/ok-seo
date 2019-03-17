@@ -34,14 +34,14 @@ class ContentObjectListFilter(admin.SimpleListFilter):
         provided in the query string and retrievable via
         `self.value()`.
         """
-        if self.value() == 'yes':
+        if self.value() == 'no':
             ids = []
             for obj in queryset.iterator():
                 if obj.content_object is None:
                     ids.append(obj.pk)
             return queryset.filter(id__in=ids)
 
-        if self.value() == 'no':
+        if self.value() == 'yes':
             ids = []
             for obj in queryset.iterator():
                 if obj.content_object is not None:
