@@ -44,7 +44,6 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
     objects = ModelInstanceSeoQuerySet.as_manager()
 
     class Meta:
-        unique_together = (("content_type", "object_id"),)
         verbose_name = pgettext_lazy("Model instance seo", "Model instance seo")
         verbose_name_plural = pgettext_lazy("Model instance seo", "Model instance seo")
 
