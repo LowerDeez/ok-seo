@@ -42,7 +42,7 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
         SeoModelsFilter
     ]
     readonly_fields = ['content_object_link']
-    search_fields = ['title', 'description', 'keywords']
+    search_fields = ['title', 'description', 'keywords', 'object_id']
 
     def content_object_link(self, obj):
         if obj.content_object:
