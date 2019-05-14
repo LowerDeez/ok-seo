@@ -25,6 +25,10 @@ __all__ = (
 
     'SEO_HTML_ADMIN_WIDGET',
 
+    'SEO_USE_URL_SEO',
+
+    'SEO_USE_URL_FULL_PATH'
+
 )
 
 # image settings
@@ -53,3 +57,7 @@ SEO_TWITTER_TYPES = getattr(django_setting, 'SEO_TWITTER_TYPES', DEFAULT_TWITTER
 SEO_FB_APP_ID = getattr(django_setting, 'SEO_FB_APP_ID', '')
 
 SEO_HTML_ADMIN_WIDGET = getattr(django_setting, 'SEO_HTML_ADMIN_WIDGET', {})
+
+SEO_USE_URL_SEO = getattr(django_setting, 'SEO_USE_URL_SEO', False)
+
+SEO_USE_URL_FULL_PATH = getattr(django_setting, 'SEO_USE_URL_FULL_PATH', False)

@@ -21,15 +21,15 @@ class ViewSeo(SeoTagsMixin, BaseSeoModel):
     """
 
     view = models.CharField(
-        pgettext_lazy("View seo", "View"),
+        pgettext_lazy("View seo model", "View"),
         max_length=100,
         choices=SEO_VIEWS_CHOICES,
         unique=True
     )
 
     class Meta:
-        verbose_name = pgettext_lazy("Model instance seo", "View seo")
-        verbose_name_plural = pgettext_lazy("Model instance seo", "View seo")
+        verbose_name = pgettext_lazy("View seo model", "View seo")
+        verbose_name_plural = pgettext_lazy("View seo model", "View seo")
 
     def __str__(self) -> str:
         return self.title

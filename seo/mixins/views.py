@@ -2,16 +2,40 @@ from typing import Dict
 
 from ..models.instance_based import ModelInstanceSeo
 from ..models.view_based import ViewSeo
+from ..models.url_based import UrlSeo
+from ..utils import get_path_from_request
 
 __all__ = (
+    'UrlSeoMixin',
     'ViewSeoMixin',
     'ModelInstanceViewSeoMixin'
 )
 
 
-class ViewSeoMixin:
+class UrlSeoMixin:
     """
-    Mixin to add meta tags from ViewSeo found by given template
+    Mixin to add meta tags from UrlSeo, found by a current path
+    """
+
+    def get_seo(self) -> Dict[str, ViewSeo]:
+        path = get_path_from_request(request=self.request)
+        return {
+            'seo': (
+                UrlSeo
+                .objects
+                .filter(url=path)
+                .first()
+            )
+        }
+
+    def get_context_data(self, **kwargs) -> Dict:
+        kwargs.update(self.get_seo())
+        return super().get_context_data(**kwargs)
+
+
+class ViewSeoMixin(UrlSeoMixin):
+    """
+    Mixin to add meta tags from ViewSeo, found by a given template
     """
     seo_view = ''  # type: str
 
@@ -25,14 +49,10 @@ class ViewSeoMixin:
             )
         }
 
-    def get_context_data(self, **kwargs) -> Dict:
-        kwargs.update(self.get_seo())
-        return super().get_context_data(**kwargs)
-
 
 class ModelInstanceViewSeoMixin(ViewSeoMixin):
     """
-    Mixin to fetch seo data for current object
+    Mixin to add meta tags from ModelInstanceSeo, found by a current content object
     """
     def get_seo(self):
         return {

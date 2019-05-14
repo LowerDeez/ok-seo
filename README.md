@@ -10,12 +10,12 @@ Install with pip:
 $ pip install django-ok-seo
 ```
 
-If you want to make seo models translatable, you need to install [django-modeltranslation](https://github.com/deschler/django-modeltranslation) package. After that run:
+If you want to make `seo models` translatable, you need to install [django-modeltranslation](https://github.com/deschler/django-modeltranslation) package. After that run:
 ```shell
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
-to create new feelds in seo models for each language.
+to create new fields in `seo models` for each language.
 
 Update INSTALLED_APPS:
 
@@ -87,7 +87,7 @@ DEFAULT_TWITTER_TYPES = (
 ```
 `SEO_FB_APP_ID` - Common Facebook application id. Also, You can set custom id in facebook_app_id field for each seo instance.
 
-`SEO_HTML_ADMIN_WIDGET` -  dictionary with default widget for `top_text` and `bottom_text` text fields in django admin interface.
+`SEO_HTML_ADMIN_WIDGET` - Dictionary with default widget for `top_text` and `bottom_text` text fields in django admin interface.
 
 For example:
 
@@ -98,9 +98,10 @@ SEO_HTML_ADMIN_WIDGET = {
 }
 ```
 
-TODO:
+`SEO_USE_URL_SEO` - Flag to use (display in an admin interface) only UrlSeo model. `False` by default.
 
-* etc
+`SEO_USE_URL_FULL_PATH` - Flag to use a whole path, plus an appended query string, to search UrlSeo isntances. `False` by default.
+
 
 ### Basic example to use:
 
@@ -126,7 +127,11 @@ Views:
 
 from django.views.generic import DetailView, TemplateView
 
-from seo.mixins.views import ViewSeoMixin, ModelInstanceViewSeoMixin
+from seo.mixins.views import (
+    ViewSeoMixin, 
+    ModelInstanceViewSeoMixin, 
+    UrlSeoMixin
+)
 
 from apps.article.models import Article
 
@@ -149,6 +154,16 @@ class ArticleDetailView(ModelInstanceViewSeoMixin, DetailView):
 
 class ArticleDetailViewJinja(ModelInstanceViewSeoMixin, DetailView):
     template_name = 'jinja/article.jinja'
+    model = Article
+    pk_url_kwarg = 'id'
+
+
+class IndexUrlSeoView(UrlSeoMixin, TemplateView):
+    template_name = 'index.html'
+
+
+class ArticleUrlSeoDetailView(UrlSeoMixin, DetailView):
+    template_name = 'article.html'
     model = Article
     pk_url_kwarg = 'id'
 ```
@@ -254,4 +269,4 @@ def get_h1_title(self) -> str:
     """
     return str(self)
 ```
-> If you want to get image from the content object, you may left the image field empty in a `ModelInstanceSeo` instance. If your image field has some specific name, you need to define a property with a name `image`.  
+> If you want to get an image from the content object, you may left the image field empty in `ModelInstanceSeo` instance. If your image field has some specific name, you need to define a property with a name `image`.  
