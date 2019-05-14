@@ -6,11 +6,29 @@ with open('requirements.txt') as f:
     requires = f.read().splitlines()
 
 
+CLASSIFIERS = [
+    'Development Status :: 4 - Beta',
+    'Environment :: Web Environment',
+    'Framework :: Django',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    "Framework :: Django :: 1.11",
+    "Framework :: Django :: 2.0",
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 2.2",
+]
+
+
 setup(
     name='django-ok-seo',
-    version='0.2.7',
+    version='0.3',
     description='Django seo app',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
+    long_description_content_type='text/x-rst',
     author='Oleg Kleschunov',
     author_email='igorkleschunov@gmail.com',
     url='https://github.com/LowerDeez/ok-seo',
@@ -18,16 +36,5 @@ setup(
     include_package_data=True,
     license='MIT',
     install_requires=requires,
-    classifiers=[
-        'Environment :: Web Environment',
-        "Development Status :: 4 - Beta",
-        "Operating System :: OS Independent",
-        "Framework :: Django :: 1.11",
-        "Framework :: Django :: 2.0",
-        "Framework :: Django :: 2.1",
-        'Intended Audience :: Developers',
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-    ]
-
+    classifiers=CLASSIFIERS
 )
