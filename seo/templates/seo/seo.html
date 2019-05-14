@@ -1,6 +1,10 @@
 <!--Base-->
 {% if robots %}
-    <meta name="robots" content="{{ robots }}">
+    {% if debug %}
+        <meta name="robots" content="noindex,nofollow">
+    {% else %}
+        <meta name="robots" content="{{ robots }}">
+    {% endif %}
 {% endif %}
 
 {% if title %}

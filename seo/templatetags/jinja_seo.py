@@ -24,10 +24,11 @@ if apps.is_installed('django_jinja'):
         Renders meta data for given obj, that can be
         some instance which inherits SeoTagsMixin mixin
         """
+        debug = context['debug']
         request = context['request']
 
         if isinstance(obj, SeoTagsMixin):
-            return obj.as_meta(request)
+            return obj.as_meta(request, debug=debug)
         return {
             'request': request,
             'canonical': request.build_absolute_uri(),

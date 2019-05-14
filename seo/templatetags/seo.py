@@ -18,7 +18,7 @@ def get_seo_data(context, seo):
     some instance which inherits SeoTagsMixin mixin
     """
     if isinstance(seo, SeoTagsMixin):
-        return seo.as_meta(context.request)
+        return seo.as_meta(context.request, context['debug'])
     request = context.request
     return {
         'request': request,

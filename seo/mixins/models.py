@@ -127,7 +127,7 @@ class SeoTagsMixin:
         """
         return getattr(self, 'seo_text', '')
 
-    def as_meta(self, request) -> Dict[str, str]:
+    def as_meta(self, request, debug: bool) -> Dict[str, str]:
         """
         Return dict available to render meta tags
         """
@@ -147,7 +147,8 @@ class SeoTagsMixin:
             'og_locale': to_locale(get_language()),
 
             'twitter_type': self.get_twitter_type(),
-            'request': request
+            'request': request,
+            'debug': debug
         }
         image = self.get_meta_image()
         if image:
