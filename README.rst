@@ -306,8 +306,7 @@ If you want to get an image from the content object, you may left the image fiel
 
 
 .. |PyPI version| image:: https://badge.fury.io/py/django-ok-seo.svg
-   :alt: Latest version on PyPI
-   :target: https://pypi.python.org/pypi/django-ok-seo
+   :target: https://badge.fury.io/py/django-ok-seo
 .. |Build Status| image:: https://img.shields.io/travis/Organice/django-ok-seo/master.svg
    :alt: Build status
    :target: https://travis-ci.org/Organice/django-ok-seo
