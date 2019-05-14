@@ -14,7 +14,7 @@ __all__ = (
 @admin.register(UrlSeo)
 class UrlSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     """
-    View seo admin interface
+    Url seo admin interface
     """
     list_display = ['url', 'title', 'index', 'follow']
     list_editable = ['index', 'follow']
