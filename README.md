@@ -1,5 +1,7 @@
 # django-ok-seo
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bdab7f660857480a8698601dfab25911)](https://app.codacy.com/app/LowerDeez/ok-seo?utm_source=github.com&utm_medium=referral&utm_content=LowerDeez/ok-seo&utm_campaign=Badge_Grade_Dashboard)
+
 This app allows you to add meta tags and OpenGraph properties to your HTML responses.
 
 ## Installation
