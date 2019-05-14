@@ -2,10 +2,6 @@ from setuptools import setup, find_packages
 
 pkj_name = 'seo'
 
-with open('requirements.txt') as f:
-    requires = f.read().splitlines()
-
-
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',
     'Environment :: Web Environment',
@@ -35,6 +31,5 @@ setup(
     packages=[pkj_name] + [pkj_name + '.' + x for x in find_packages(pkj_name)],
     include_package_data=True,
     license='MIT',
-    install_requires=requires,
     classifiers=CLASSIFIERS
 )
