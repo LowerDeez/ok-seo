@@ -30,7 +30,7 @@ matrix:
     - { env: DJANGO=2.2, python: 3.4 }
 
 install: 
-  - pip install tox-travis coveralls
+  - pip install tox-travis tox coveralls
 
 script:
   - tox
