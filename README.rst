@@ -322,9 +322,9 @@ If you want to get an image from the content object, you may left the image fiel
 
 .. |PyPI version| image:: https://badge.fury.io/py/django-ok-seo.svg
    :target: https://badge.fury.io/py/django-ok-seo
-.. |Build Status| image:: https://img.shields.io/travis/Organice/django-ok-seo/master.svg
+.. |Build Status| image:: https://travis-ci.org/LowerDeez/ok-seo.svg?branch=master
+   :target: https://travis-ci.org/LowerDeez/ok-seo
    :alt: Build status
-   :target: https://travis-ci.org/Organice/django-ok-seo
 .. |Code Health| image:: https://api.codacy.com/project/badge/Grade/e5078569e40d428283d17efa0ebf9d19
    :target: https://www.codacy.com/app/LowerDeez/ok-seo
    :alt: Code health
