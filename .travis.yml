@@ -1,1 +1,39 @@
+dist: xenial
+sudo: false
 language: python
+cache: pip
+
+python:
+  - 3.6
+  - 3.7
+
+env:
+  - DJANGO=1.11
+  - DJANGO=2.1
+  - DJANGO=2.2
+  - DJANGO=master
+
+matrix:
+  allow_failures:
+    - python: 3.6
+      env: DJANGO=master
+    - python: 3.7
+      env: DJANGO=master
+    - env: TOXENV=bandit
+  fast_finish: true
+  exclude:
+    # Python/Django combinations that aren't officially supported
+    - { env: DJANGO=1.11, python: 3.7 }
+    - { env: DJANGO=2.1, python: 2.7 }
+    - { env: DJANGO=2.1, python: 3.4 }
+    - { env: DJANGO=2.2, python: 2.7 }
+    - { env: DJANGO=2.2, python: 3.4 }
+
+install: 
+  - pip install tox-travis coveralls
+
+script:
+  - tox
+
+after_success:
+  - coveralls

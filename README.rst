@@ -2,7 +2,7 @@
 django-ok-seo |PyPI version|
 ===============================
 
-|Build Status| |Code Health| |Python Versions| |Requirements Status| |license| |PyPI downloads| 
+|Build Status| |Code Health| |Python Versions| |Requirements Status| |license| |PyPI downloads| |Coverage|
 
 This app allows you to add meta tags and OpenGraph properties to your HTML responses.
 
@@ -337,5 +337,8 @@ If you want to get an image from the content object, you may left the image fiel
 .. |PyPI downloads| image:: https://img.shields.io/pypi/dm/django-ok-seo.svg
    :alt: PyPI downloads
 .. |Requirements Status| image:: https://requires.io/github/LowerDeez/ok-seo/requirements.svg?branch=master
+.. |Coverage| image:: https://coveralls.io/repos/github/LowerDeez/ok-seo/badge.svg?branch=master
+   :target: https://coveralls.io/github/LowerDeez/ok-seo?branch=master
+   :alt: Code coverage
 
 .. _django-modeltranslation: https://github.com/deschler/django-modeltranslation

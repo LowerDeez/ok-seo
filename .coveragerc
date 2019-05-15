@@ -1,0 +1,19 @@
+[run]
+source = seo
+branch = 1
+
+[report]
+omit = 
+    seo/migrations/*
+    seo/tests/*
+    seo/admin/*
+    .venv/*
+    env/*
+    setup.py
+include = seo/*
+ignore_errors = True
+exclude_lines =
+    if self.debug:
+    pragma: no cover
+    raise NotImplementedError
+    if __name__ == .__main__.:

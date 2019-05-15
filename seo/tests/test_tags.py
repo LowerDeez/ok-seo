@@ -22,11 +22,12 @@ class GetSeoDataTemplateTagTest(TestCase):
             object_type='article'
         )
         request = self.factory.get('/')
-        context = Context({'seo': seo}, {'request': request})
+        context = Context({'seo': seo, 'debug': True})
         context.request = request
+        context.debug = True
         template_to_render = Template(
             '{% load seo %}'
-            '{% get_seo_data %}'
+            '{% get_seo_data seo %}'
         )
         rendered_template = template_to_render.render(context)
         self.assertInHTML(
@@ -51,10 +52,6 @@ class GetSeoDataTemplateTagTest(TestCase):
         )
         self.assertInHTML(
             f'<meta property="og:description" content="{seo.get_meta_description()}">',
-            rendered_template
-        )
-        self.assertInHTML(
-            f'<meta property="og:image" content="{request.build_absolute_uri(seo.get_meta_image())}">',
             rendered_template
         )
         self.assertInHTML(
