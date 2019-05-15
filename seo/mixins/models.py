@@ -59,7 +59,8 @@ class SeoTagsMixin:
         """
         return getattr(self, 'keywords', '')
 
-    def get_facebook_app_id(self) -> str:
+    @staticmethod
+    def get_facebook_app_id() -> str:
         """
         Return facebook app id
         """

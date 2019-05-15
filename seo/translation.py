@@ -11,11 +11,11 @@ __all__ = (
 
 class ModelInstanceSeoTranslationOptions(TranslationOptions):
     fields = (
-        'title', 
-        'keywords', 
+        'title',
+        'keywords',
         'description',
-        'alt', 
-        'h1', 
+        'alt',
+        'h1',
         'seo_text'
     )
 

@@ -13,7 +13,7 @@ __all__ = (
 )
 
 
-def image_upload_to(instance, filename) -> str:
+def image_upload_to(instance, filename: str) -> str:
     """
     Util to set upload_to path,
     based on model's class name and date of uploading for image field

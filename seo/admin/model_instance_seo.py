@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 from django.utils.translation import pgettext_lazy
 
 from .base_fields import base_seo_fields
@@ -22,9 +22,9 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     fieldsets = (
         (None, {
             'fields': (
-                'content_type', 
-                'object_id', 
-                'content_object_link', 
+                'content_type',
+                'object_id',
+                'content_object_link',
             )
         }),
         (pgettext_lazy('Model Instance seo admin', 'Meta'), {
@@ -32,8 +32,16 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
         }),
     )
 
-    list_display = ['title', 'index', 'follow', 'content_object_link']
-    list_editable = ['index', 'follow']
+    list_display = [
+        'title',
+        'index',
+        'follow',
+        'content_object_link'
+    ]
+    list_editable = [
+        'index',
+        'follow'
+    ]
     list_filter = [
         'index',
         'follow',
@@ -41,20 +49,33 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
         ContentObjectListFilter,
         SeoModelsFilter
     ]
-    readonly_fields = ['content_object_link']
-    search_fields = ['title', 'description', 'keywords', 'object_id']
+    list_per_page = 25
+    readonly_fields = [
+        'content_object_link'
+    ]
+    search_fields = [
+        'title',
+        'description',
+        'keywords',
+        'object_id'
+    ]
 
     def content_object_link(self, obj):
         if obj.content_object:
             url = admin_change_url(obj.content_object)
-            return mark_safe(
-                f'<a href="{url}" target="_blank">'
-                f'{obj.content_object}'
-                f'</a>'
+            return format_html(
+                '<a href="{}">{}</a>',
+                url,
+                obj.content_object
             )
         return '-'
     content_object_link.short_description = pgettext_lazy(
-        'Model instance seo admin', 'Content Object')
+        'Model instance seo admin',
+        'Content Object'
+    )
 
     def get_queryset(self, request):
-        return super().get_queryset(request).prefetch_related('content_object')
+        return (
+            super().get_queryset(request)
+            .prefetch_related('content_object')
+        )

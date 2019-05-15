@@ -43,11 +43,25 @@ Make migrations
     $ python manage.py migrate
 
 
+Features
+========
+
+There are two options of usage:
+
+1) ``UrlSeo`` - a model to fetch seo data by an url.
+
+2) ``ViewSeo`` and ``ModelInstanceSeo`` - models to attach seo data for specific views (using choices) and objects (using “generic” relationships). 
+
+
 Available settings
 ==================
 
-``SEO_VIEWS_CHOICES`` - Tuple of tuples. Where the first value is the 
-value to use in code and second is is verbose (translated).
+``SEO_USE_URL_SEO`` - Flag to use (display in an admin interface) only `UrlSeo` model. `False` by default.
+
+``SEO_USE_URL_FULL_PATH`` - Flag to use a whole path, plus an appended query string, to search `UrlSeo` isntances. `False` by default.
+
+``SEO_VIEWS_CHOICES`` - Tuple of tuples for using with `ViewSeo`. The first value is the value to use in s code and a second is a verbose (translated) value.
+
 For example:
 
 .. code:: python
@@ -60,11 +74,11 @@ For example:
 
 ``SEO_MODELS`` - List of models names to limit content type choices for 'ModelInstanceSeo'.
 
-``SEO_DEFAULT_IMAGE`` - path to default image, which will be used for 'og:image' property.
+``SEO_DEFAULT_IMAGE`` - Path to default image, which will be used for 'og:image' property.
 
-``SEO_IMAGE_WIDTH`` - value of `width` for image. `1200` by default.
+``SEO_IMAGE_WIDTH`` - Value of `width` for image. `1200` by default.
 
-``SEO_IMAGE_HEIGHT`` - value of `height` for image. `630` by default.
+``SEO_IMAGE_HEIGHT`` - Value of `height` for image. `630` by default.
 
 ``SEO_IMAGE_EXTENSIONS`` - List of allowed image extensions for ImageField in seo model. 
 
@@ -114,15 +128,11 @@ For example:
     }
 
 
-``SEO_USE_URL_SEO`` - Flag to use (display in an admin interface) only UrlSeo model. `False` by default.
-
-``SEO_USE_URL_FULL_PATH`` - Flag to use a whole path, plus an appended query string, to search UrlSeo isntances. `False` by default.
-
-
 Basic example to use:
 =====================
 
-Admin inline:
+Admin inline (for `ModelInstanceSeo`):
+--------------------------------------
 
 .. code:: python
 
@@ -139,7 +149,8 @@ Admin inline:
         inlines = [ModelInstanceSeoInline]
     
 
-Views:
+Views (examples for all models):
+--------------------------------
 
 .. code:: python
 
@@ -186,7 +197,16 @@ Views:
         template_name = 'article.html'
         model = Article
         pk_url_kwarg = 'id'
-    
+
+
+Context processor (for `UrlSeo`):
+---------------------------------
+
+.. code:: python
+
+    # ...
+    'seo.context_processors.seo',
+
 
 Your templates:
 ===============
@@ -228,12 +248,7 @@ Your templates:
     <div id='seo_text'>
         {{ seo.seo_text|safe }}
     </div>
-    
 
-View seo
-========
-
-To add some meta tags to your view, just go to `/admin/seo/viewseo/add/`.
 
 Inheritance
 ===============

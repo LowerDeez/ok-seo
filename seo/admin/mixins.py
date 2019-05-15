@@ -29,4 +29,4 @@ class AdminRichTextFieldMixin:
 
     @staticmethod
     def is_text_field(field):
-        return type(field) == models.TextField
+        return isinstance(field, models.TextField)

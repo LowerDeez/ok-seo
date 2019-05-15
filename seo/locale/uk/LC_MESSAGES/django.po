@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-21 09:28+0000\n"
+"POT-Creation-Date: 2019-05-15 07:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,9 +42,14 @@ msgctxt "Model Instance seo admin"
 msgid "Meta"
 msgstr ""
 
-#: seo/admin/model_instance_seo.py:57
+#: seo/admin/model_instance_seo.py:74
 msgctxt "Model instance seo admin"
 msgid "Content Object"
+msgstr ""
+
+#: seo/admin/url_seo.py:47
+msgctxt "Url seo admin"
+msgid "Meta"
 msgstr ""
 
 #: seo/admin/view_seo.py:28
@@ -128,86 +133,111 @@ msgstr ""
 
 #: seo/models/base.py:72
 msgctxt "Base seo model"
-msgid "Seo Title"
+msgid "Canonical"
 msgstr ""
 
 #: seo/models/base.py:77
 msgctxt "Base seo model"
+msgid "Seo Title"
+msgstr ""
+
+#: seo/models/base.py:82
+msgctxt "Base seo model"
 msgid "Meta Keywords"
 msgstr ""
 
-#: seo/models/base.py:81
+#: seo/models/base.py:86
 msgctxt "Base seo model"
 msgid "Meta Description"
 msgstr ""
 
-#: seo/models/base.py:85
+#: seo/models/base.py:90
 msgctxt "Base seo model"
 msgid "Image"
 msgstr ""
 
-#: seo/models/base.py:91
+#: seo/models/base.py:96
 msgctxt "Base seo model"
 msgid "Image width"
 msgstr ""
 
-#: seo/models/base.py:95
+#: seo/models/base.py:100
 msgctxt "Base seo model"
 msgid "Image height"
 msgstr ""
 
-#: seo/models/base.py:99
+#: seo/models/base.py:104
 msgctxt "Base seo model"
 msgid "Image alt text"
 msgstr ""
 
-#: seo/models/base.py:104
+#: seo/models/base.py:109
 msgctxt "Base seo model"
 msgid "H1 title"
 msgstr ""
 
-#: seo/models/base.py:109
+#: seo/models/base.py:114
 msgctxt "Base seo model"
-msgid "Seo text for page"
+msgid "Seo text"
 msgstr ""
 
-#: seo/models/base.py:113
+#: seo/models/base.py:118
 msgctxt "Base seo model"
 msgid ""
 "Can be useful for some static pages or some objects (like product category)."
 msgstr ""
 
 #: seo/models/instance_based.py:29
-msgctxt "Model instance seo"
+msgctxt "Model instance seo model"
 msgid "Content Type"
 msgstr ""
 
 #: seo/models/instance_based.py:31
-msgctxt "Model instance seo"
+msgctxt "Model instance seo model"
 msgid "Please select the type (model) for the relation, you want to build."
 msgstr ""
 
 #: seo/models/instance_based.py:37
-msgctxt "Model instance seo"
+msgctxt "Model instance seo model"
 msgid "Object Primary Key"
 msgstr ""
 
 #: seo/models/instance_based.py:40
-msgctxt "Model instance seo"
+msgctxt "Model instance seo model"
 msgid "Please enter the ID of the related object."
 msgstr ""
 
-#: seo/models/instance_based.py:48 seo/models/instance_based.py:49
-msgctxt "Model instance seo"
+#: seo/models/instance_based.py:47 seo/models/instance_based.py:48
+msgctxt "Model instance seo model"
 msgid "Model instance seo"
 msgstr ""
 
+#: seo/models/url_based.py:26
+msgctxt "Url seo model"
+msgid "Url"
+msgstr ""
+
+#: seo/models/url_based.py:32
+msgctxt "Url seo model"
+msgid "Is default"
+msgstr ""
+
+#: seo/models/url_based.py:36
+msgctxt "Url seo model"
+msgid "Default instance for all pages."
+msgstr ""
+
+#: seo/models/url_based.py:42 seo/models/url_based.py:43
+msgctxt "Url seo model"
+msgid "Url seo"
+msgstr ""
+
 #: seo/models/view_based.py:24
-msgctxt "View seo"
+msgctxt "View seo model"
 msgid "View"
 msgstr ""
 
 #: seo/models/view_based.py:31 seo/models/view_based.py:32
-msgctxt "Model instance seo"
+msgctxt "View seo model"
 msgid "View seo"
 msgstr ""

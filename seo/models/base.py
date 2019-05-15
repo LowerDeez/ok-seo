@@ -10,7 +10,7 @@ from ..const import (
 )
 from ..settings import (
     SEO_OG_TYPES,
-    SEO_TWITTER_TYPES, 
+    SEO_TWITTER_TYPES,
     SEO_IMAGE_EXTENSIONS,
     SEO_IMAGE_WIDTH,
     SEO_IMAGE_HEIGHT
@@ -122,6 +122,6 @@ class BaseSeoModel(models.Model):
     class Meta:
         abstract = True
 
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
+    def delete(self, using=None, keep_parents=False):
+        super().delete(using=using, keep_parents=keep_parents)
         self.image.delete(save=False)

@@ -28,6 +28,14 @@ class UrlSeo(SeoTagsMixin, BaseSeoModel):
         unique=True,
         db_index=True
     )
+    is_default = models.BooleanField(
+        pgettext_lazy("Url seo model", "Is default"),
+        default=False,
+        help_text=pgettext_lazy(
+            "Url seo model",
+            "Default instance for all pages."
+        ),
+    )
     path = property(lambda self: urlparse(self.url).path)
 
     class Meta:
@@ -36,3 +44,12 @@ class UrlSeo(SeoTagsMixin, BaseSeoModel):
 
     def __str__(self) -> str:
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.is_default:
+            (
+                self.__class__.objects
+                .filter(is_default=True)
+                .update(is_default=False)
+            )
+        return super().save(*args, **kwargs)

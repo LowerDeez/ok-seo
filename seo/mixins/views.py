@@ -2,8 +2,7 @@ from typing import Dict
 
 from ..models.instance_based import ModelInstanceSeo
 from ..models.view_based import ViewSeo
-from ..models.url_based import UrlSeo
-from ..utils import get_path_from_request
+from ..services import get_url_seo
 
 __all__ = (
     'UrlSeoMixin',
@@ -18,14 +17,9 @@ class UrlSeoMixin:
     """
 
     def get_seo(self) -> Dict[str, ViewSeo]:
-        path = get_path_from_request(request=self.request)
+        seo = get_url_seo(request=self.request)
         return {
-            'seo': (
-                UrlSeo
-                .objects
-                .filter(url=path)
-                .first()
-            )
+            'seo': seo
         }
 
     def get_context_data(self, **kwargs) -> Dict:
@@ -44,7 +38,9 @@ class ViewSeoMixin(UrlSeoMixin):
             'seo': (
                 ViewSeo
                 .objects
-                .filter(view=self.seo_view)
+                .filter(
+                    view=self.seo_view
+                )
                 .first()
             )
         }
