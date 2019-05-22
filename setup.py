@@ -20,7 +20,7 @@ CLASSIFIERS = [
 
 setup(
     name='django-ok-seo',
-    version='0.4.1',
+    version='0.4.2',
     description='Django seo app',
     long_description=open('README.rst').read(),
     long_description_content_type='text/x-rst',
