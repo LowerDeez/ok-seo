@@ -1,6 +1,6 @@
-===============================
+============================
 django-ok-seo |PyPI version|
-===============================
+============================
 
 |Build Status| |Code Health| |Python Versions| |Requirements Status| |license| |PyPI downloads| |Coverage|
 
@@ -15,15 +15,6 @@ Install with pip:
 
     $ pip install django-ok-seo
 
-If you want to make ``seo models`` translatable, you need to install `django-modeltranslation`_ package. After that run:
-
-.. code:: shell
-
-    $ python manage.py makemigrations
-    $ python manage.py migrate
-
-to create new fields in `seo models` for each language.
-
 Update INSTALLED_APPS:
 
 .. code:: python
@@ -36,11 +27,21 @@ Update INSTALLED_APPS:
         ...
     ]
 
-
 Make migrations
+
 .. code:: shell
 
     $ python manage.py migrate
+
+
+If you want to make ``seo models`` translatable, you need to install `django-modeltranslation`_ package. After that run:
+
+.. code:: shell
+
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+
+to create new fields in `seo models` for each language.
 
 
 Features
