@@ -119,6 +119,8 @@ By default:
 
 ``SEO_HTML_ADMIN_WIDGET`` - Dictionary with default widget for `top_text` and `bottom_text` text fields in django admin interface.
 
+``SEO_DEBUG_MODE`` - Sets debug mode. If ``True`` adds `<meta name="robots" content="noindex,nofollow">` to all pages.
+
 For example:
 
 .. code:: python

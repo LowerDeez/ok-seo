@@ -27,7 +27,9 @@ __all__ = (
 
     'SEO_USE_URL_SEO',
 
-    'SEO_USE_URL_FULL_PATH'
+    'SEO_USE_URL_FULL_PATH',
+
+    'SEO_DEBUG_MODE'
 
 )
 
@@ -61,3 +63,5 @@ SEO_HTML_ADMIN_WIDGET = getattr(django_setting, 'SEO_HTML_ADMIN_WIDGET', {})
 SEO_USE_URL_SEO = getattr(django_setting, 'SEO_USE_URL_SEO', False)
 
 SEO_USE_URL_FULL_PATH = getattr(django_setting, 'SEO_USE_URL_FULL_PATH', False)
+
+SEO_DEBUG_MODE = getattr(django_setting, 'SEO_DEBUG_MODE', True)

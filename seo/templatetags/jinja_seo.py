@@ -4,6 +4,7 @@ from django.apps import apps
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import to_locale, get_language
 
+from ..settings import SEO_DEBUG_MODE
 from ..mixins.models import SeoTagsMixin
 
 __all__ = (
@@ -24,7 +25,7 @@ if apps.is_installed('django_jinja'):
         Renders meta data for given obj, that can be
         some instance which inherits SeoTagsMixin mixin
         """
-        debug = context['debug']
+        debug = SEO_DEBUG_MODE
         request = context['request']
 
         if isinstance(obj, SeoTagsMixin):

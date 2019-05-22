@@ -2,6 +2,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.template import Library
 from django.utils.translation import to_locale, get_language
 
+from ..settings import SEO_DEBUG_MODE
 from ..mixins.models import SeoTagsMixin
 
 __all__ = (
@@ -18,7 +19,7 @@ def get_seo_data(context, seo):
     some instance which inherits SeoTagsMixin mixin
     """
     if isinstance(seo, SeoTagsMixin):
-        return seo.as_meta(context.request, context['debug'])
+        return seo.as_meta(context.request, SEO_DEBUG_MODE)
     request = context.request
     return {
         'request': request,
