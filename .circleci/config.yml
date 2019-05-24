@@ -1,11 +1,21 @@
 version: 2
 
 jobs:
-  build:
-    docker:
-      - image: circleci/python:3.6
-    steps:
-      - run: pip install --user virtualenv
-      - run: virtualenv seo
-      - run: source seo/bin/activate && pip install tox
-      - run: source seo/bin/activate && tox
+
+  toxify:
+
+      docker:
+        - image: python:3.6
+
+      steps:
+
+        - checkout
+
+        - run: pip install tox && tox
+
+workflows:
+  version: 2
+
+  seo:
+    jobs:
+      - toxify
