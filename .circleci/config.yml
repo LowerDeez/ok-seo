@@ -5,7 +5,6 @@ jobs:
     docker:
       - image: circleci/python:3.6
     steps:
-      - checkout
       - run: pip install --user virtualenv
       - run: virtualenv seo
       - run: source seo/bin/activate && pip install tox
