@@ -2,6 +2,7 @@ from typing import Dict
 
 from ..models.instance_based import ModelInstanceSeo
 from ..models.view_based import ViewSeo
+from ..models.url_based import UrlSeo
 from ..services import get_url_seo
 
 __all__ = (
@@ -16,7 +17,7 @@ class UrlSeoMixin:
     Mixin to add meta tags from UrlSeo, found by a current path
     """
 
-    def get_seo(self) -> Dict[str, ViewSeo]:
+    def get_seo(self) -> Dict[str, UrlSeo]:
         seo = get_url_seo(request=self.request)
         return {
             'seo': seo

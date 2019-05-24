@@ -1,4 +1,4 @@
-from django.conf import settings as django_setting
+from django.conf import settings as django_settings
 
 from .const import (
     DEFAULT_IMAGE_EXTENSIONS,
@@ -29,39 +29,68 @@ __all__ = (
 
     'SEO_USE_URL_FULL_PATH',
 
-    'SEO_DEBUG_MODE'
+    'SEO_DEBUG_MODE',
+
+    'SEO_IMAGE_STORAGE'
 
 )
 
 # image settings
-SEO_DEFAULT_IMAGE = getattr(django_setting, 'SEO_DEFAULT_IMAGE', '')
-SEO_IMAGE_WIDTH = getattr(django_setting, 'SEO_IMAGE_WIDTH', 1200)
-SEO_IMAGE_HEIGHT = getattr(django_setting, 'SEO_IMAGE_HEIGHT', 630)
+SEO_DEFAULT_IMAGE = getattr(django_settings, 'SEO_DEFAULT_IMAGE', '')
+SEO_IMAGE_WIDTH = getattr(django_settings, 'SEO_IMAGE_WIDTH', 1200)
+SEO_IMAGE_HEIGHT = getattr(django_settings, 'SEO_IMAGE_HEIGHT', 630)
 
 # allowed image extensions for seo image
-SEO_IMAGE_EXTENSIONS = getattr(django_setting, 'SEO_IMAGE_EXTENSIONS', DEFAULT_IMAGE_EXTENSIONS)
+SEO_IMAGE_EXTENSIONS = getattr(
+    django_settings,
+    'SEO_IMAGE_EXTENSIONS',
+    DEFAULT_IMAGE_EXTENSIONS
+)
+
+SEO_IMAGE_STORAGE = getattr(
+    django_settings,
+    'SEO_IMAGE_STORAGE',
+    django_settings.DEFAULT_FILE_STORAGE
+)
 
 # seo models to limit content type choices
-SEO_MODELS = getattr(django_setting, 'SEO_MODELS', [])
+SEO_MODELS = getattr(django_settings, 'SEO_MODELS', [])
 
 # choices of views to add seo data
-SEO_VIEWS_CHOICES = getattr(django_setting, 'SEO_VIEWS_CHOICES', [])
+SEO_VIEWS_CHOICES = getattr(django_settings, 'SEO_VIEWS_CHOICES', [])
 
-SEO_SITE_NAME = getattr(django_setting, 'SEO_SITE_NAME', None)
+SEO_SITE_NAME = getattr(django_settings, 'SEO_SITE_NAME', None)
 
 # choices of open graph object types
-SEO_OG_TYPES = getattr(django_setting, 'SEO_OG_TYPES', DEFAULT_OBJECT_TYPES)
+SEO_OG_TYPES = getattr(
+    django_settings,
+    'SEO_OG_TYPES',
+    DEFAULT_OBJECT_TYPES
+)
 
 # choices of twitter card types
-SEO_TWITTER_TYPES = getattr(django_setting, 'SEO_TWITTER_TYPES', DEFAULT_TWITTER_TYPES)
+SEO_TWITTER_TYPES = getattr(
+    django_settings,
+    'SEO_TWITTER_TYPES',
+    DEFAULT_TWITTER_TYPES
+)
 
 # facebook app id
-SEO_FB_APP_ID = getattr(django_setting, 'SEO_FB_APP_ID', '')
+SEO_FB_APP_ID = getattr(django_settings, 'SEO_FB_APP_ID', '')
 
-SEO_HTML_ADMIN_WIDGET = getattr(django_setting, 'SEO_HTML_ADMIN_WIDGET', {})
+SEO_HTML_ADMIN_WIDGET = getattr(
+    django_settings,
+    'SEO_HTML_ADMIN_WIDGET',
+    {}
+)
 
-SEO_USE_URL_SEO = getattr(django_setting, 'SEO_USE_URL_SEO', False)
+SEO_USE_URL_SEO = getattr(django_settings, 'SEO_USE_URL_SEO', False)
 
-SEO_USE_URL_FULL_PATH = getattr(django_setting, 'SEO_USE_URL_FULL_PATH', False)
+SEO_USE_URL_FULL_PATH = getattr(
+    django_settings,
+    'SEO_USE_URL_FULL_PATH',
+    False
+)
 
-SEO_DEBUG_MODE = getattr(django_setting, 'SEO_DEBUG_MODE', True)
+SEO_DEBUG_MODE = getattr(django_settings, 'SEO_DEBUG_MODE', True)
+

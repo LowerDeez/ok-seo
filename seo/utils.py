@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from django.conf import settings
 from django.urls import reverse
-from django.utils.timezone import localtime, now
 from django.utils.text import slugify
 from django.utils.translation.trans_real import language_code_prefix_re
 
@@ -18,8 +19,11 @@ def image_upload_to(instance, filename: str) -> str:
     Util to set upload_to path,
     based on model's class name and date of uploading for image field
     """
-    tz_now = localtime(now()).strftime('%Y/%m/%d')
-    return f"{slugify(instance.__class__.__name__)}/{tz_now}/{filename}"
+    tz_now = datetime.now().strftime('%Y/%m/%d')
+    return (
+        f"{slugify(instance.__class__.__name__)}/"
+        f"{tz_now}/{filename}"
+    )
 
 
 def admin_change_url(obj) -> str:

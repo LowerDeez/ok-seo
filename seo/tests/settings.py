@@ -69,3 +69,5 @@ USE_L10N = False
 USE_TZ = False
 
 LOGIN_REDIRECT_URL = '/admin/'
+
+SEO_MODELS = ['user']

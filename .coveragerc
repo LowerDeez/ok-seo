@@ -7,6 +7,9 @@ omit =
     seo/migrations/*
     seo/tests/*
     seo/admin/*
+    seo/translation.py
+    seo/context_processors.py 
+    seo/*/__init__.py
     .venv/*
     env/*
     setup.py

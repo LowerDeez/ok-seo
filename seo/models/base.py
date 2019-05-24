@@ -1,3 +1,4 @@
+from django.core.files.storage import get_storage_class
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import pgettext_lazy
@@ -13,13 +14,17 @@ from ..settings import (
     SEO_TWITTER_TYPES,
     SEO_IMAGE_EXTENSIONS,
     SEO_IMAGE_WIDTH,
-    SEO_IMAGE_HEIGHT
+    SEO_IMAGE_HEIGHT,
+    SEO_IMAGE_STORAGE
 )
 from ..utils import image_upload_to
 
 __all__ = (
     'BaseSeoModel',
 )
+
+
+image_storage = get_storage_class(SEO_IMAGE_STORAGE)
 
 
 class BaseSeoModel(models.Model):
@@ -90,6 +95,7 @@ class BaseSeoModel(models.Model):
         pgettext_lazy('Base seo model', 'Image'),
         upload_to=image_upload_to,
         blank=True, null=True,
+        storage=image_storage(),
         validators=[FileExtensionValidator(SEO_IMAGE_EXTENSIONS)]
     )
     width = models.PositiveIntegerField(
