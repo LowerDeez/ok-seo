@@ -16,6 +16,8 @@ class UrlSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     """
     Url seo admin interface
     """
+    change_form_template = 'admin/seo/url_seo.html'
+
     list_display = [
         'url',
         'title',

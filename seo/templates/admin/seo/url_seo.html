@@ -1,0 +1,112 @@
+{% extends 'admin/change_form.html' %}
+
+{% block content %}
+<!--    {{ block.super }}<br class="clear"/>-->
+    {% if original %}
+        <style>
+            #google {
+                border: 1px solid #dddddd;
+                background-color:#fff;
+                max-width: 600px;
+                padding: 15px;
+                margin: 10px auto;
+            }
+
+            .google-title {
+                color: #1a0dab;
+                font-family: arial, sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                height: auto;
+                line-height: 19px;
+                list-style-image: none;
+                list-style-position: outside;
+                list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding: 0px;
+                text-align: left;
+                text-decoration: none;
+                visibility: visible;
+                width: auto;
+                display:block;
+            }
+
+            .google-url {
+                color: #093;
+                display: block;
+                font-family: arial, sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: normal;
+                height: auto;
+                line-height: 16px;
+                list-style-image: none;
+                list-style-position: outside;
+                list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+                text-align: left;
+                visibility: visible;
+                max-width: 600px;
+                display:block;
+            }
+
+            .google-desc {
+                color: #222;
+                font-family: arial, sans-serif;
+                font-size: 13px;
+                font-weight: normal;
+                height: auto;
+                line-height: 18.2px;
+                list-style-image: none;
+                list-style-position: outside;
+                list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                text-align: left;
+                visibility: visible;
+                max-width: 600px;
+            }
+        </style>
+
+        <div id="google">
+            <div id="google-title" class="google-title">
+                {{ original.title }}
+            </div>
+
+            <cite id="google-url" class="google-url">
+                {{ request.scheme }}://{{ request.META.HTTP_HOST }}<span id="google-path">{{ original.url }}</span>
+
+            </cite>
+
+            <div id="google-desc" class="google-desc">
+                {{ original.description }}
+            </div>
+        </div>
+        <script>
+            django.jQuery(document).ready(function() {
+                django.jQuery('#google').prependTo(django.jQuery(".field-title").parent());
+                django.jQuery('#google').siblings('h2').prependTo(django.jQuery(".field-title").parent());
+                django.jQuery('#id_title').on('keyup', function () {
+                    document.getElementById("google-title").innerHTML = this.value;
+                });
+                django.jQuery('#id_description').on('keyup', function () {
+                    document.getElementById("google-desc").innerHTML = this.value;
+                });
+                django.jQuery('#id_url').on('keyup', function () {
+                    document.getElementById("google-path").innerHTML = this.value;
+                });
+            });
+        </script>
+    {% endif %}
+    {{ block.super }}<br class="clear"/>
+{% endblock %}
