@@ -2,7 +2,7 @@
 django-ok-seo |PyPI version|
 ============================
 
-|Build Status| |Code Health| |Python Versions| |Requirements Status| |license| |PyPI downloads| |Coverage|
+|Build Status| |Code Health| |Coverage| |Requirements Status| |Python Versions| |PyPI downloads| |license|
 |Project Status|
 
 This app allows you to add meta tags and OpenGraph properties to your HTML responses.
