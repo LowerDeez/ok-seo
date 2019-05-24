@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:latest-node-browsers
+      - image: circleci/python:3.6
     steps:
       - checkout
       - run: pip install --user virtualenv
