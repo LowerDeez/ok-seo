@@ -31,7 +31,10 @@ __all__ = (
 
     'SEO_DEBUG_MODE',
 
-    'SEO_IMAGE_STORAGE'
+    'SEO_IMAGE_STORAGE',
+
+    'SEO_URL_SEO_SITEMAP_PRIORITY',
+    'SEO_URL_SEO_SITEMAP_CHANGEFREQ'
 
 )
 
@@ -94,3 +97,14 @@ SEO_USE_URL_FULL_PATH = getattr(
 
 SEO_DEBUG_MODE = getattr(django_settings, 'SEO_DEBUG_MODE', True)
 
+SEO_URL_SEO_SITEMAP_PRIORITY = getattr(
+    django_settings,
+    'SEO_URL_SEO_SITEMAP_PRIORITY',
+    1
+)
+
+SEO_URL_SEO_SITEMAP_CHANGEFREQ = getattr(
+    django_settings,
+    'SEO_URL_SEO_SITEMAP_CHANGEFREQ',
+    'always'
+)

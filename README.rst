@@ -124,6 +124,10 @@ By default:
 
 ``SEO_DEBUG_MODE`` - Sets debug mode. If ``True`` adds `<meta name="robots" content="noindex,nofollow">` to all pages.
 
+``SEO_URL_SEO_SITEMAP_PRIORITY`` - `UrlSeo` sitemap priority. `1` by default.
+
+``SEO_URL_SEO_SITEMAP_CHANGEFREQ`` - `UrlSeo` sitemap changefreq. `always` by default.
+
 For example:
 
 .. code:: python
@@ -324,6 +328,39 @@ Also, you can use this way with `ModelInstanceViewSeoMixin` to still use `ModelI
         return str(self)
 
 If you want to get an image from the content object, you may left the image field empty in `ModelInstanceSeo` instance. If your image field has some specific name, you need to define a property with a name `image`.  
+
+
+Sitemap
+=======
+
+.. code:: python
+
+    # sitemaps.py
+
+    from seo.sitemaps import UrlSeoSitemap
+
+    ...
+
+    sitemaps = {
+        'pages': UrlSeoSitemap
+    }
+
+
+    # urls.py
+
+    ...
+    from django.contrib.sitemaps import views as sitemap_views
+    ...
+
+    from somewhere.sitemaps import sitemaps
+
+
+    urlpatterns = [
+        url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}, name='sitemap'),
+        url(r'^sitemap-(?P<section>\w+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps},
+            name='django.contrib.sitemaps.views.sitemap'),
+    ]
+
 
 
 .. |PyPI version| image:: https://badge.fury.io/py/django-ok-seo.svg

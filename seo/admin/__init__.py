@@ -7,5 +7,6 @@ from .utils import *
 if SEO_USE_URL_SEO:
     from .url_seo import *
 else:
+    from .url_seo import *
     from .model_instance_seo import *
     from .view_seo import *
