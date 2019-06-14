@@ -47,11 +47,23 @@ class SeoTagsMixin:
         """
         return getattr(self, 'title', '')
 
+    def get_og_title(self) -> str:
+        """
+        Return OpenGraph title
+        """
+        return getattr(self, 'og_title', self.get_meta_title())
+
     def get_meta_description(self) -> str:
         """
         Return meta description
         """
         return getattr(self, 'description', '')
+
+    def get_og_description(self) -> str:
+        """
+        Return OpenGraph description
+        """
+        return getattr(self, 'og_description', self.get_meta_description())
 
     def get_meta_keywords(self) -> str:
         """
@@ -139,7 +151,9 @@ class SeoTagsMixin:
                 request.build_absolute_uri()
             ),
             'title': self.get_meta_title(),
+            'og_title': self.get_og_title(),
             'description': self.get_meta_description(),
+            'og_description': self.get_og_description(),
             'keywords': self.get_meta_keywords(),
 
             'facebook_app_id': self.get_facebook_app_id(),

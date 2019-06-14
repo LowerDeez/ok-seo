@@ -5,12 +5,13 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation.trans_real import language_code_prefix_re
 
-from .settings import SEO_USE_URL_FULL_PATH
+from .settings import SEO_USE_URL_FULL_PATH, SEO_MODELS
 
 __all__ = (
     'image_upload_to',
     'admin_change_url',
-    'get_path_from_request'
+    'get_path_from_request',
+    'get_seo_models_filters'
 )
 
 
@@ -58,3 +59,19 @@ def get_path_from_request(request, full_path: bool = SEO_USE_URL_FULL_PATH):
                 path = '/' + path
 
     return path
+
+
+def get_seo_models_filters():
+    """
+    Return filters to limit `content_type` QuerySet
+    """
+    apps = []
+    models = []
+    for item in SEO_MODELS:
+        app, model = item.split('.')
+        apps.append(app)
+        models.append(model)
+    return {
+        'model__in': models,
+        'app_label__in': apps
+    }

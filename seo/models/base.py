@@ -79,16 +79,25 @@ class BaseSeoModel(models.Model):
         blank=True
     )
     title = models.CharField(
-        pgettext_lazy('Base seo model', 'Seo Title'),
+        pgettext_lazy('Base seo model', 'Title'),
+        max_length=255,
+        blank=True
+    )
+    og_title = models.CharField(
+        pgettext_lazy('Base seo model', 'OpenGraph Title'),
         max_length=255,
         blank=True
     )
     keywords = models.TextField(
-        pgettext_lazy('Base seo model', 'Meta Keywords'),
+        pgettext_lazy('Base seo model', 'Keywords'),
         blank=True,
     )
     description = models.TextField(
-        pgettext_lazy('Base seo model', 'Meta Description'),
+        pgettext_lazy('Base seo model', 'Description'),
+        blank=True,
+    )
+    og_description = models.TextField(
+        pgettext_lazy('Base seo model', 'OpenGraph Description'),
         blank=True,
     )
     image = models.ImageField(

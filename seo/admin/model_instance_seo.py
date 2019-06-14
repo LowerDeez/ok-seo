@@ -55,7 +55,9 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     ]
     search_fields = [
         'title',
+        'og_title',
         'description',
+        'og_description',
         'keywords',
         'object_id'
     ]

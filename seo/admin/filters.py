@@ -59,4 +59,9 @@ class SeoModelsFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            return queryset.filter(content_type__model=self.value())
+            app, model = self.value().split('.')
+            filters = {
+                'content_type__model': model,
+                'content_type__app_label': app
+            }
+            return queryset.filter(**filters)

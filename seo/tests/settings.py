@@ -70,4 +70,4 @@ USE_TZ = False
 
 LOGIN_REDIRECT_URL = '/admin/'
 
-SEO_MODELS = ['user']
+SEO_MODELS = ['auth.user']

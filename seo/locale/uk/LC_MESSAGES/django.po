@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-16 06:59+0000\n"
+"POT-Creation-Date: 2019-06-14 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,17 +42,17 @@ msgctxt "Model Instance seo admin"
 msgid "Meta"
 msgstr ""
 
-#: seo/admin/model_instance_seo.py:74
+#: seo/admin/model_instance_seo.py:76
 msgctxt "Model instance seo admin"
 msgid "Content Object"
 msgstr ""
 
-#: seo/admin/url_seo.py:47
+#: seo/admin/url_seo.py:51
 msgctxt "Url seo admin"
 msgid "Meta"
 msgstr ""
 
-#: seo/admin/view_seo.py:28
+#: seo/admin/view_seo.py:45
 msgctxt "View seo admin"
 msgid "Meta"
 msgstr ""
@@ -111,103 +111,113 @@ msgctxt "Follow choices"
 msgid "No follow"
 msgstr ""
 
-#: seo/models/base.py:44
+#: seo/models/base.py:49
 msgctxt "Base seo model"
 msgid "Open graph type"
 msgstr ""
 
-#: seo/models/base.py:51
+#: seo/models/base.py:56
 msgctxt "Base seo model"
 msgid "Twitter type"
 msgstr ""
 
-#: seo/models/base.py:58
+#: seo/models/base.py:63
 msgctxt "Base seo model"
 msgid "Index robots value"
 msgstr ""
 
-#: seo/models/base.py:65
+#: seo/models/base.py:70
 msgctxt "Base seo model"
 msgid "Follow robots value"
 msgstr ""
 
-#: seo/models/base.py:72
+#: seo/models/base.py:77
 msgctxt "Base seo model"
 msgid "Canonical"
 msgstr ""
 
-#: seo/models/base.py:77
-msgctxt "Base seo model"
-msgid "Seo Title"
-msgstr ""
-
 #: seo/models/base.py:82
 msgctxt "Base seo model"
-msgid "Meta Keywords"
+msgid "Title"
 msgstr ""
 
-#: seo/models/base.py:86
+#: seo/models/base.py:87
 msgctxt "Base seo model"
-msgid "Meta Description"
+msgid "OpenGraph Title"
 msgstr ""
 
-#: seo/models/base.py:90
+#: seo/models/base.py:92
 msgctxt "Base seo model"
-msgid "Image"
+msgid "Keywords"
 msgstr ""
 
 #: seo/models/base.py:96
 msgctxt "Base seo model"
-msgid "Image width"
+msgid "Description"
 msgstr ""
 
 #: seo/models/base.py:100
 msgctxt "Base seo model"
-msgid "Image height"
+msgid "OpenGraph Description"
 msgstr ""
 
 #: seo/models/base.py:104
 msgctxt "Base seo model"
+msgid "Image"
+msgstr ""
+
+#: seo/models/base.py:111
+msgctxt "Base seo model"
+msgid "Image width"
+msgstr ""
+
+#: seo/models/base.py:115
+msgctxt "Base seo model"
+msgid "Image height"
+msgstr ""
+
+#: seo/models/base.py:119
+msgctxt "Base seo model"
 msgid "Image alt text"
 msgstr ""
 
-#: seo/models/base.py:109
+#: seo/models/base.py:124
 msgctxt "Base seo model"
 msgid "H1 title"
 msgstr ""
 
-#: seo/models/base.py:114
+#: seo/models/base.py:129
 msgctxt "Base seo model"
 msgid "Seo text"
 msgstr ""
 
-#: seo/models/base.py:118
+#: seo/models/base.py:133
 msgctxt "Base seo model"
 msgid ""
 "Can be useful for some static pages or some objects (like product category)."
 msgstr ""
 
-#: seo/models/instance_based.py:29
+#: seo/models/instance_based.py:30
 msgctxt "Model instance seo model"
 msgid "Content Type"
 msgstr ""
 
-#: seo/models/instance_based.py:31
+#: seo/models/instance_based.py:32
 msgctxt "Model instance seo model"
 msgid "Please select the type (model) for the relation, you want to build."
 msgstr ""
 
-#: seo/models/instance_based.py:37
+#: seo/models/instance_based.py:38
 msgctxt "Model instance seo model"
 msgid "Object Primary Key"
 msgstr ""
 
-#: seo/models/instance_based.py:40
+#: seo/models/instance_based.py:41
 msgctxt "Model instance seo model"
 msgid "Please enter the ID of the related object."
 msgstr ""
 
-#: seo/models/instance_based.py:47 seo/models/instance_based.py:48
+#: seo/models/instance_based.py:48 seo/models/instance_based.py:49
 msgctxt "Model instance seo model"
 msgid "Model instance seo"
 msgstr ""

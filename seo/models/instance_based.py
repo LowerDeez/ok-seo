@@ -6,7 +6,7 @@ from django.utils.translation import pgettext_lazy
 from .base import BaseSeoModel
 from ..querysets import ModelInstanceSeoQuerySet
 from ..mixins.models import SeoTagsMixin
-from .. import settings
+from ..utils import get_seo_models_filters
 
 __all__ = (
     'ModelInstanceSeo',
@@ -30,7 +30,7 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         help_text=pgettext_lazy("Model instance seo model",
                                 "Please select the type (model) "
                                 "for the relation, you want to build."),
-        limit_choices_to={'model__in': settings.SEO_MODELS},
+        limit_choices_to=get_seo_models_filters(),
         on_delete=models.CASCADE
     )
     object_id = models.CharField(
@@ -64,6 +64,14 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
             return getattr(self.content_object, 'get_meta_title')()
         return super().get_meta_title()
 
+    def get_og_title(self) -> str:
+        """
+        Return OpenGraph title
+        """
+        if not self.og_title and self.is_inherits():
+            return getattr(self.content_object, 'get_og_title')()
+        return super().get_og_title()
+
     def get_meta_description(self) -> str:
         """
         Return meta description
@@ -71,6 +79,14 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         if not self.description and self.is_inherits():
             return getattr(self.content_object, 'get_meta_description')()
         return super().get_meta_description()
+
+    def get_og_description(self) -> str:
+        """
+        Return OpenGraph description
+        """
+        if not self.description and self.is_inherits():
+            return getattr(self.content_object, 'get_og_description')()
+        return super().get_og_description()
 
     def get_h1_title(self) -> str:
         """

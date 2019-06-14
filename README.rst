@@ -76,6 +76,16 @@ For example:
 
 ``SEO_MODELS`` - List of models names to limit content type choices for 'ModelInstanceSeo'.
 
+For example (use lowercase):
+
+.. code:: python
+
+    SEO_MODELS = [
+        'article.article',
+        'auth.user'
+    ]
+
+
 ``SEO_DEFAULT_IMAGE`` - Path to default image, which will be used for 'og:image' property.
 
 ``SEO_IMAGE_WIDTH`` - Value of `width` for image. `1200` by default.

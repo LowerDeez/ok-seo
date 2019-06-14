@@ -16,10 +16,27 @@ class ViewSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
     """
     View seo admin interface
     """
-    list_display = ['view', 'title', 'index', 'follow']
-    list_editable = ['index', 'follow']
-    list_filter = ['index', 'follow']
-    search_fields = ['title', 'description', 'keywords']
+    list_display = [
+        'view',
+        'title',
+        'index',
+        'follow'
+    ]
+    list_editable = [
+        'index',
+        'follow'
+    ]
+    list_filter = [
+        'index',
+        'follow'
+    ]
+    search_fields = [
+        'title',
+        'og_title',
+        'description',
+        'og_description',
+        'keywords'
+    ]
 
     fieldsets = (
         (None, {
