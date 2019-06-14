@@ -51,7 +51,7 @@ class SeoTagsMixin:
         """
         Return OpenGraph title
         """
-        return getattr(self, 'og_title', self.get_meta_title())
+        return getattr(self, 'og_title', None) or self.get_meta_title()
 
     def get_meta_description(self) -> str:
         """
@@ -63,7 +63,10 @@ class SeoTagsMixin:
         """
         Return OpenGraph description
         """
-        return getattr(self, 'og_description', self.get_meta_description())
+        return (
+            getattr(self, 'og_description', None) or
+            self.get_meta_description()
+        )
 
     def get_meta_keywords(self) -> str:
         """
