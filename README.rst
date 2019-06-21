@@ -228,6 +228,31 @@ Context processor (for `UrlSeo`):
     'seo.context_processors.seo',
 
 
+Middleware (for `UrlSeo`) to use from `request` variable in tepmlates:
+----------------------------------------------------------------------
+
+.. code:: python
+
+    MIDDLEWARE = [
+        ...
+
+        # seo
+        'apps.core.middleware.seo_middleware'
+    ]
+
+
+In templates:
+
+
+.. code:: html
+
+    {% load seo %}
+    <head>
+        <meta charset="UTF-8">
+        {% get_seo_data request.seo %}
+    </head>
+
+
 Your templates:
 ===============
 

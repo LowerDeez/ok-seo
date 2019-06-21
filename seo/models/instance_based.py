@@ -100,7 +100,7 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         """
         Return image field instance to get image url
         """
-        field = getattr(self, self.SEO_IMAGE_FIELD, None)
+        field = self.image
         if not field:
             field = getattr(self.content_object, self.SEO_IMAGE_FIELD, None)
         return field

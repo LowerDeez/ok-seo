@@ -33,3 +33,9 @@ class ViewSeo(SeoTagsMixin, BaseSeoModel):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_meta_image_field(self):
+        """
+        Return image field instance to get image url
+        """
+        return self.image

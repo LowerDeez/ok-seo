@@ -59,7 +59,7 @@ class SeoModelsFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            app, model = self.value().split('.')
+            app, model = self.value().lower().split('.')
             filters = {
                 'content_type__model': model,
                 'content_type__app_label': app
