@@ -1,4 +1,3 @@
-from django import forms
 from django.db import models
 
 from .utils import get_html_field_widget
@@ -24,7 +23,6 @@ class AdminRichTextFieldMixin:
             rich_text_fields = self.get_rich_text_fields()
             if rich_text_fields and db_field.name in set(rich_text_fields):
                 return db_field.formfield(widget=get_html_field_widget())
-            return db_field.formfield(widget=forms.Textarea())
         return super().formfield_for_dbfield(db_field, **kwargs)
 
     @staticmethod
