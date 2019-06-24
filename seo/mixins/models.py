@@ -2,6 +2,7 @@ import mimetypes
 from typing import Dict
 
 from django.contrib.sites.shortcuts import get_current_site
+from django.db.models import Model
 from django.utils.translation import to_locale, get_language
 
 from ..const import DEFAULT_OBJECT_TYPES, DEFAULT_TWITTER_TYPES
@@ -9,6 +10,7 @@ from ..settings import (
     SEO_DEFAULT_IMAGE,
     SEO_IMAGE_HEIGHT,
     SEO_IMAGE_WIDTH,
+    SEO_OBJECT_IMAGE_FIELD,
     SEO_SITE_NAME,
     SEO_FB_APP_ID
 )
@@ -23,7 +25,7 @@ class SeoTagsMixin:
     Mixin for seo tags in the <head> section
     """
 
-    SEO_IMAGE_FIELD = 'image'
+    SEO_IMAGE_FIELD = SEO_OBJECT_IMAGE_FIELD
 
     def get_robots_content(self) -> str:
         """
@@ -81,17 +83,17 @@ class SeoTagsMixin:
         """
         return SEO_FB_APP_ID
 
-    def get_meta_image_field(self):
+    def get_meta_image_field(self, obj: Model = None):
         """
         Return image field instance to get image url
         """
         return getattr(self, self.SEO_IMAGE_FIELD, None)
 
-    def get_meta_image(self) -> str:
+    def get_meta_image(self, obj: Model = None) -> str:
         """
         Return url of image
         """
-        image_field = self.get_meta_image_field()
+        image_field = self.get_meta_image_field(obj)
         if image_field:
             try:
                 return image_field.url
@@ -143,7 +145,7 @@ class SeoTagsMixin:
         """
         return getattr(self, 'seo_text', '')
 
-    def as_meta(self, request, debug: bool) -> Dict[str, str]:
+    def as_meta(self, request, debug: bool, obj: Model = None) -> Dict[str, str]:
         """
         Return dict available to render meta tags
         """
@@ -168,7 +170,7 @@ class SeoTagsMixin:
             'request': request,
             'debug': debug
         }
-        image = self.get_meta_image()
+        image = self.get_meta_image(obj)
         if image:
             meta.update({
                 'image': request.build_absolute_uri(image),

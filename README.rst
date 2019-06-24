@@ -96,6 +96,8 @@ For example (use lowercase):
 
 ``SEO_IMAGE_STORAGE`` - Custom file storage for ImageField in seo model. '`django.core.files.storage.FileSystemStorage`' by default.
 
+``SEO_OBJECT_IMAGE_FIELD`` - A name of field to get image from an object. '`image`' by default.
+
 By default:
 
 .. code:: python

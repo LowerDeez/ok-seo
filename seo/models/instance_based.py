@@ -1,6 +1,7 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.db.models import Model
 from django.utils.translation import pgettext_lazy
 
 from .base import BaseSeoModel
@@ -96,11 +97,13 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
             return getattr(self.content_object, 'get_h1_title')()
         return super().get_h1_title()
 
-    def get_meta_image_field(self):
+    def get_meta_image_field(self, obj: Model = None):
         """
         Return image field instance to get image url
         """
         field = self.image
         if not field:
-            field = getattr(self.content_object, self.SEO_IMAGE_FIELD, None)
+            if not obj:
+                obj = self.content_object
+            field = getattr(obj, self.SEO_IMAGE_FIELD, None)
         return field

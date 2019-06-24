@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Model
 from django.utils.translation import pgettext_lazy
 
 from .base import BaseSeoModel
@@ -34,8 +35,11 @@ class ViewSeo(SeoTagsMixin, BaseSeoModel):
     def __str__(self) -> str:
         return self.title
 
-    def get_meta_image_field(self):
+    def get_meta_image_field(self, obj: Model = None):
         """
         Return image field instance to get image url
         """
-        return self.image
+        field = self.image
+        if not field and obj:
+            field = getattr(obj, self.SEO_IMAGE_FIELD, None)
+        return field
