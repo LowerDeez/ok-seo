@@ -68,7 +68,7 @@ def get_seo_models_filters():
     apps = []
     models = []
     for item in SEO_MODELS:
-        app, model = item.split('.')
+        app, model = item.lower().split('.')
         apps.append(app)
         models.append(model)
     return {

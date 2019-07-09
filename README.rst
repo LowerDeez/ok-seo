@@ -239,7 +239,7 @@ Middleware (for `UrlSeo`) to use from `request` variable in tepmlates:
         ...
 
         # seo
-        'apps.core.middleware.seo_middleware'
+        'seo.middleware.url_seo_middleware'
     ]
 
 
