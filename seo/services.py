@@ -15,17 +15,18 @@ def get_url_seo(request) -> Optional[UrlSeo]:
     path = get_path_from_request(request=request)
 
     if SEO_USE_URL_FULL_PATH:
+        path_without_params = get_path_from_request(request, False)
         objects = (
             UrlSeo.objects
             .filter(
                 Q(url=path) |
-                Q(url=request.path) |
+                Q(url=path_without_params) |
                 Q(is_default=True)
             )
             .annotate(
                 priority=Case(
                     When(url=path, then=Value(1)),  # with GET params
-                    When(url=request.path, then=Value(2)),  # without GET params
+                    When(url=path_without_params, then=Value(2)),  # without GET params
                     When(is_default=True, then=Value(3)),
                     default=Value(0),
                     output_field=SmallIntegerField()
