@@ -89,7 +89,7 @@ def get_locale(request):
     else:
         language = get_language()
     code = locale_alias.get(language)
-    if '.' in code:
+    if code and '.' in code:
         locale_tuple = tuple(code.split('.')[:2])
         try:
             return locale_tuple[0]
