@@ -14,6 +14,7 @@ from ..settings import (
     SEO_SITE_NAME,
     SEO_FB_APP_ID
 )
+from ..utils import get_locale
 
 __all__ = (
     'SeoTagsMixin',
@@ -164,7 +165,7 @@ class SeoTagsMixin:
             'facebook_app_id': self.get_facebook_app_id(),
             'og_type': self.get_opengraph_type(),
             'site_name': SEO_SITE_NAME or get_current_site(request),
-            'og_locale': to_locale(get_language()),
+            'og_locale': get_locale(request),
 
             'twitter_type': self.get_twitter_type(),
             'request': request,

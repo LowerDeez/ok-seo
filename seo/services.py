@@ -28,7 +28,7 @@ def get_url_seo(request) -> Optional[UrlSeo]:
                     When(url=path, then=Value(1)),  # with GET params
                     When(url=path_without_params, then=Value(2)),  # without GET params
                     When(is_default=True, then=Value(3)),
-                    default=Value(0),
+                    default=Value(4),
                     output_field=SmallIntegerField()
                 )
             )

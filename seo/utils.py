@@ -1,8 +1,10 @@
 from datetime import datetime
+from locale import getlocale, locale_alias
 
 from django.conf import settings
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.translation import to_locale, get_language
 from django.utils.translation.trans_real import language_code_prefix_re
 
 from .settings import SEO_USE_URL_FULL_PATH, SEO_MODELS
@@ -11,7 +13,8 @@ __all__ = (
     'image_upload_to',
     'admin_change_url',
     'get_path_from_request',
-    'get_seo_models_filters'
+    'get_seo_models_filters',
+    'get_locale'
 )
 
 
@@ -75,3 +78,21 @@ def get_seo_models_filters():
         'model__in': models,
         'app_label__in': apps
     }
+
+
+def get_locale(request):
+    """
+    Return locale like `en_GB`
+    """
+    if request and hasattr(request, 'LANGUAGE_CODE'):
+        language = request.LANGUAGE_CODE
+    else:
+        language = get_language()
+    code = locale_alias.get(language)
+    if '.' in code:
+        locale_tuple = tuple(code.split('.')[:2])
+        try:
+            return locale_tuple[0]
+        except IndexError:
+            pass
+    return to_locale(language)
