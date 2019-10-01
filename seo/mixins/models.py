@@ -38,11 +38,14 @@ class SeoTagsMixin:
             return f'{index}, {follow}'
         return ''
 
-    def get_canonical(self) -> str:
+    def get_canonical(self, request) -> str:
         """
         Return canonical URL
         """
-        return getattr(self, 'canonical', None)
+        canonical = getattr(self, 'canonical', None)
+        if canonical and str(canonical).startswith('/'):
+            return request.build_absolute_uri(canonical)
+        return canonical
 
     def get_meta_title(self) -> str:
         """
@@ -153,8 +156,8 @@ class SeoTagsMixin:
         meta = {
             'robots': self.get_robots_content(),
             'canonical': (
-                self.get_canonical() or
-                request.build_absolute_uri()
+                self.get_canonical(request) or
+                request.build_absolute_uri(request.path)
             ),
             'title': self.get_meta_title(),
             'og_title': self.get_og_title(),
