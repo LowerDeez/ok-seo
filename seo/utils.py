@@ -71,9 +71,10 @@ def get_seo_models_filters():
     apps = []
     models = []
     for item in SEO_MODELS:
-        app, model = item.lower().split('.')
-        apps.append(app)
-        models.append(model)
+        if item:
+            app, model = item.lower().rsplit('.', 1)
+            apps.append(app)
+            models.append(model)
     return {
         'model__in': models,
         'app_label__in': apps
