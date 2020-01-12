@@ -28,8 +28,8 @@ class UrlSeoSitemap(Sitemap):
             .values_list('url', flat=True)
         )
 
-    def location(self, item):
-        return item
+    def location(self, obj):
+        return obj
 
     def lastmod(self, item):
         return now()
