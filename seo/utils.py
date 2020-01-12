@@ -1,5 +1,5 @@
 from datetime import datetime
-from locale import getlocale, locale_alias
+from locale import locale_alias
 
 from django.conf import settings
 from django.urls import reverse

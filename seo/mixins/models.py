@@ -3,7 +3,6 @@ from typing import Dict
 
 from django.contrib.sites.shortcuts import get_current_site
 from django.db.models import Model
-from django.utils.translation import to_locale, get_language
 
 from ..const import DEFAULT_OBJECT_TYPES, DEFAULT_TWITTER_TYPES
 from ..settings import (

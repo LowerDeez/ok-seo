@@ -34,7 +34,7 @@ def check_seo_models_settings(app_configs, **kwargs):
                         app_label=app_label,
                         model_name=model_name
                     )
-                except LookupError as e:
+                except LookupError:
                     errors.append(
                         Error(
                             f'Setting SEO_MODELS can not import next model: `{item}`.',
