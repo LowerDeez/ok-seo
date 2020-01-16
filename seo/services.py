@@ -12,6 +12,10 @@ __all__ = (
 
 
 def get_url_seo(request) -> Optional[UrlSeo]:
+    """
+    Return `UrlSeo` instance filtered by the current path with or without
+    an appended query string, if applicable by settings
+    """
     path = get_path_from_request(request=request)
 
     if SEO_USE_URL_FULL_PATH:

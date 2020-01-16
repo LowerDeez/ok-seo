@@ -11,6 +11,9 @@ __all__ = (
 
 
 def check_seo_models_settings(app_configs, **kwargs):
+    """
+    Check correct paths in `SEO_MODELS` setting
+    """
     errors = []
     seo_models = seo_settings.SEO_MODELS
 
@@ -48,6 +51,10 @@ def check_seo_models_settings(app_configs, **kwargs):
 
 
 def check_seo_debug_mode(app_configs, **kwargs):
+    """
+    Check values of django's `DEBUG` and `SEO_DEBUG_MODE`
+    to make sure the correct behavior of the package in a production mode
+    """
     warnings = []
     seo_debug = seo_settings.SEO_DEBUG_MODE
     django_debug = settings.DEBUG

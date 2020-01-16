@@ -6,4 +6,7 @@ __all__ = (
 
 
 def seo(request):
+    """
+    Context processor to store `UrlSeo` instance in the current context
+    """
     return {'seo': get_url_seo(request)}

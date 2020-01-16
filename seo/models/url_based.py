@@ -20,6 +20,7 @@ class UrlSeo(SeoTagsMixin, BaseSeoModel):
 
     Attrs:
         url (CharField): url
+        is_default (BooleanField): set the instance as default for all urls
     """
 
     url = models.CharField(
