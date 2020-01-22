@@ -62,7 +62,7 @@ Available settings
 
 ``SEO_USE_URL_FULL_PATH`` - Flag to use a whole path, plus an appended query string, to search `UrlSeo` isntances. `False` by default.
 
-``SEO_VIEWS_CHOICES`` - Tuple of tuples for using with `ViewSeo`. The first value is the value to use in s code and a second is a verbose (translated) value.
+``SEO_VIEWS_CHOICES`` - Tuple of tuples for using with `ViewSeo`. The first value is the value to use in a code and a second is a verbose (translated) value.
 
 For example:
 
