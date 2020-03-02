@@ -4,6 +4,7 @@ from ..models.instance_based import ModelInstanceSeo
 from ..models.view_based import ViewSeo
 from ..models.url_based import UrlSeo
 from ..services import get_url_seo
+from ..settings import SEO_VIEWS_CONTEXT_NAME
 
 __all__ = (
     'UrlSeoMixin',
@@ -20,7 +21,7 @@ class UrlSeoMixin:
     def get_seo(self) -> Dict[str, UrlSeo]:
         seo = get_url_seo(request=self.request)
         return {
-            'seo': seo
+            SEO_VIEWS_CONTEXT_NAME: seo
         }
 
     def get_context_data(self, **kwargs) -> Dict:
@@ -36,7 +37,7 @@ class ViewSeoMixin(UrlSeoMixin):
 
     def get_seo(self) -> Dict[str, ViewSeo]:
         return {
-            'seo': (
+            SEO_VIEWS_CONTEXT_NAME: (
                 ViewSeo
                 .objects
                 .filter(
@@ -53,7 +54,7 @@ class ModelInstanceViewSeoMixin(ViewSeoMixin):
     """
     def get_seo(self):
         return {
-            'seo': (
+            SEO_VIEWS_CONTEXT_NAME: (
                 ModelInstanceSeo
                 .objects
                 .filter_by_instance(self.object)

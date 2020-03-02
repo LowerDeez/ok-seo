@@ -35,7 +35,8 @@ __all__ = (
     'SEO_IMAGE_STORAGE',
 
     'SEO_URL_SEO_SITEMAP_PRIORITY',
-    'SEO_URL_SEO_SITEMAP_CHANGEFREQ'
+    'SEO_URL_SEO_SITEMAP_CHANGEFREQ',
+    'SEO_VIEWS_CONTEXT_NAME'
 
 )
 
@@ -109,4 +110,10 @@ SEO_URL_SEO_SITEMAP_CHANGEFREQ = getattr(
     django_settings,
     'SEO_URL_SEO_SITEMAP_CHANGEFREQ',
     'always'
+)
+
+SEO_VIEWS_CONTEXT_NAME = getattr(
+    django_settings,
+    'SEO_VIEWS_CONTEXT_NAME',
+    'seo'
 )

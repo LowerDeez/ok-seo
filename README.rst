@@ -140,6 +140,8 @@ By default:
 
 ``SEO_URL_SEO_SITEMAP_CHANGEFREQ`` - `UrlSeo` sitemap changefreq. `always` by default.
 
+``SEO_VIEWS_CONTEXT_NAME`` - name of context variable for mixins for class based views. `seo` by default.
+
 For example:
 
 .. code:: python
