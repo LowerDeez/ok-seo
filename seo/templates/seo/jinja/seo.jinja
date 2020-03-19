@@ -1,4 +1,18 @@
 <!--Base-->
+{% if USE_I18N %}
+    {% for language_code, language_name in LANGUAGES %}
+        <link
+            rel="alternate"
+            hreflang="{{ language_code }}"
+            href="{{ jinja_translate_url(language_code) }}">
+    {% endfor %}
+    <link
+        rel="alternate"
+        hreflang="x-default"
+        href="{{ jinja_translate_url(LANGUAGE_CODE) }}" />
+
+{% endif %}
+
 {% if robots %}
     {% if debug %}
         <meta name="robots" content="noindex,nofollow">

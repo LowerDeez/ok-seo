@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from django.db.models import Case, Q, Value, When, SmallIntegerField
 
@@ -6,12 +6,15 @@ from .models.url_based import UrlSeo
 from .utils import get_path_from_request
 from .settings import SEO_USE_URL_FULL_PATH
 
+if TYPE_CHECKING:
+    from django.http import HttpRequest
+
 __all__ = (
     'get_url_seo',
 )
 
 
-def get_url_seo(request) -> Optional[UrlSeo]:
+def get_url_seo(request: 'HttpRequest') -> Optional['UrlSeo']:
     """
     Return `UrlSeo` instance filtered by the current path with or without
     an appended query string, if applicable by settings

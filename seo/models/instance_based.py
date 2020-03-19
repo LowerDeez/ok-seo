@@ -28,25 +28,35 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
     content_type = models.ForeignKey(
         ContentType,
         verbose_name=pgettext_lazy("Model instance seo model", "Content Type"),
-        help_text=pgettext_lazy("Model instance seo model",
-                                "Please select the type (model) "
-                                "for the relation, you want to build."),
+        help_text=pgettext_lazy(
+            "Model instance seo model",
+            "Please select the type (model) "
+            "for the relation, you want to build."
+        ),
         limit_choices_to=get_seo_models_filters(),
         on_delete=models.CASCADE
     )
     object_id = models.CharField(
         pgettext_lazy("Model instance seo model", "Object Primary Key"),
         max_length=255,
-        help_text=pgettext_lazy("Model instance seo model",
-                                "Please enter the ID of the related object."),
+        help_text=pgettext_lazy(
+            "Model instance seo model",
+            "Please enter the ID of the related object."
+        ),
     )
     content_object = GenericForeignKey('content_type', 'object_id')
 
     objects = ModelInstanceSeoQuerySet.as_manager()
 
     class Meta:
-        verbose_name = pgettext_lazy("Model instance seo model", "Model instance seo")
-        verbose_name_plural = pgettext_lazy("Model instance seo model", "Model instance seo")
+        verbose_name = pgettext_lazy(
+            "Model instance seo model",
+            "Model instance seo"
+        )
+        verbose_name_plural = pgettext_lazy(
+            "Model instance seo model",
+            "Model instance seo"
+        )
 
     def __str__(self) -> str:
         return self.title

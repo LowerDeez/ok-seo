@@ -6,7 +6,8 @@ from .models.url_based import UrlSeo
 
 __all__ = (
     'ModelInstanceSeoTranslationOptions',
-    'ViewSeoTranslationOptions'
+    'ViewSeoTranslationOptions',
+    'UrlSeoTranslationOptions'
 )
 
 

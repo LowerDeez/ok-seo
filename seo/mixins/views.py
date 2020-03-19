@@ -31,7 +31,8 @@ class UrlSeoMixin:
 
 class ViewSeoMixin(UrlSeoMixin):
     """
-    Mixin to add meta tags from ViewSeo, found by a given template
+    Mixin to add meta tags from ViewSeo,
+    found by a given template
     """
     seo_view = ''  # type: str
 
@@ -50,7 +51,8 @@ class ViewSeoMixin(UrlSeoMixin):
 
 class ModelInstanceViewSeoMixin(ViewSeoMixin):
     """
-    Mixin to add meta tags from ModelInstanceSeo, found by a current content object
+    Mixin to add meta tags from ModelInstanceSeo,
+    found by a current content object
     """
     def get_seo(self):
         return {

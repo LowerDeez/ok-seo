@@ -3,6 +3,7 @@ from typing import Dict
 
 from django.contrib.sites.shortcuts import get_current_site
 from django.db.models import Model
+from django.utils.translation import to_locale, get_language
 
 from ..const import DEFAULT_OBJECT_TYPES, DEFAULT_TWITTER_TYPES
 from ..settings import (
@@ -148,7 +149,9 @@ class SeoTagsMixin:
         """
         return getattr(self, 'seo_text', '')
 
-    def as_meta(self, request, debug: bool, obj: Model = None) -> Dict[str, str]:
+    def as_meta(
+            self, request, debug: bool, obj: Model = None
+    ) -> Dict[str, str]:
         """
         Return dict available to render meta tags
         """

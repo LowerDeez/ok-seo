@@ -130,7 +130,8 @@ class BaseSeoModel(models.Model):
         blank=True,
         help_text=pgettext_lazy(
             'Base seo model',
-            'Can be useful for some static pages or some objects (like product category).'
+            'Can be useful for some static pages '
+            'or some objects (like product category).'
         ),
     )
 

@@ -12,7 +12,10 @@ __all__ = (
 
 
 @admin.register(UrlSeo)
-class UrlSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
+class UrlSeoAdmin(
+    AdminRichTextFieldMixin,
+    get_admin_base_class()
+):
     """
     Url seo admin interface
     """

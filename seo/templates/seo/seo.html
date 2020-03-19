@@ -1,4 +1,19 @@
 <!--Base-->
+{% load seo %}
+
+{% if USE_I18N %}
+    {% for language_code, language_name in LANGUAGES %}
+        <link
+            rel="alternate"
+            hreflang="{{ language_code }}"
+            href="{% translate_url language_code %}" />
+    {% endfor %}
+    <link
+        rel="alternate"
+        hreflang="x-default"
+        href="{% translate_url LANGUAGE_CODE %}" />
+{% endif %}
+
 {% if robots %}
     {% if debug %}
         <meta name="robots" content="noindex,nofollow">

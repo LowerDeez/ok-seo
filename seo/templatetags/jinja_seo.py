@@ -1,15 +1,21 @@
-from typing import Dict
+from typing import Any, Dict, TYPE_CHECKING
 
+from django import urls
 from django.apps import apps
 from django.contrib.sites.shortcuts import get_current_site
 from django.db.models import Model
 from django.utils.translation import to_locale, get_language
 
 from ..settings import SEO_DEBUG_MODE
+from ..utils import get_i18n_context
 from ..mixins.models import SeoTagsMixin
+
+if TYPE_CHECKING:
+    from seo.models.base import BaseSeoModel
 
 __all__ = (
     'get_jinja_seo_data',
+    'jinja_translate_url'
 )
 
 
@@ -21,7 +27,11 @@ if apps.is_installed('django_jinja'):
     @library.global_function
     @library.render_with("seo/jinja/seo.jinja")
     @jinja2.contextfunction
-    def get_jinja_seo_data(context, seo, obj: Model=None) -> Dict[str, str]:
+    def get_jinja_seo_data(
+            context: Dict[str, Any],
+            seo: 'BaseSeoModel',
+            obj: Model = None
+    ) -> Dict[str, str]:
         """
         Renders meta data for given obj, that can be
         some instance which inherits SeoTagsMixin mixin
@@ -30,10 +40,26 @@ if apps.is_installed('django_jinja'):
         request = context['request']
 
         if isinstance(seo, SeoTagsMixin):
-            return seo.as_meta(request, debug=debug, obj=obj)
-        return {
-            'request': request,
-            'canonical': request.build_absolute_uri(),
-            'og_locale': to_locale(get_language()),
-            'site_name': get_current_site(request),
-        }
+            template_context = seo.as_meta(
+                request=request,
+                debug=debug,
+                obj=obj
+            )
+        else:
+            template_context = {
+                'request': request,
+                'canonical': request.build_absolute_uri(),
+                'og_locale': to_locale(get_language()),
+                'site_name': get_current_site(request),
+            }
+        template_context.update(get_i18n_context())
+        return template_context
+
+
+    @library.global_function
+    @jinja2.contextfunction
+    def jinja_translate_url(
+            context: Dict[str, Any], language: str
+    ) -> str:
+        url = context['request'].build_absolute_uri()
+        return urls.translate_url(url, language)

@@ -19,7 +19,10 @@ def get_admin_base_class():
     Return base admin class
     """
     if apps.is_installed('modeltranslation'):
-        return import_module('modeltranslation.admin').TabbedExternalJqueryTranslationAdmin
+        return (
+            import_module('modeltranslation.admin')
+            .TabbedExternalJqueryTranslationAdmin
+        )
     return admin.ModelAdmin
 
 
@@ -29,7 +32,8 @@ def get_admin_inline_base_class():
     """
     if apps.is_installed('modeltranslation'):
         class TabbedTranslationInline(
-            import_module('modeltranslation.admin').TranslationGenericStackedInline
+            import_module('modeltranslation.admin')
+            .TranslationGenericStackedInline
         ):
             class Media:
                 js = (
