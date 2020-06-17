@@ -134,14 +134,6 @@ By default:
 
 ``SEO_HTML_ADMIN_WIDGET`` - Dictionary with default widget for `top_text` and `bottom_text` text fields in django admin interface.
 
-``SEO_DEBUG_MODE`` - Sets debug mode. If ``True`` adds `<meta name="robots" content="noindex,nofollow">` to all pages.
-
-``SEO_URL_SEO_SITEMAP_PRIORITY`` - `UrlSeo` sitemap priority. `1` by default.
-
-``SEO_URL_SEO_SITEMAP_CHANGEFREQ`` - `UrlSeo` sitemap changefreq. `always` by default.
-
-``SEO_VIEWS_CONTEXT_NAME`` - name of context variable for mixins for class based views. `seo` by default.
-
 For example:
 
 .. code:: python
@@ -150,6 +142,14 @@ For example:
         'widget': 'TinyMCE',
         'widget_path': 'tinymce.widgets'
     }
+
+``SEO_DEBUG_MODE`` - Sets debug mode. If ``True`` adds `<meta name="robots" content="noindex,nofollow">` to all pages.
+
+``SEO_URL_SEO_SITEMAP_PRIORITY`` - `UrlSeo` sitemap priority. `1` by default.
+
+``SEO_URL_SEO_SITEMAP_CHANGEFREQ`` - `UrlSeo` sitemap changefreq. `always` by default.
+
+``SEO_VIEWS_CONTEXT_NAME`` - name of context variable for mixins for class based views. `seo` by default.
 
 
 Basic example to use:
