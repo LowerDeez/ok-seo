@@ -4,6 +4,7 @@ from django import forms
 from django.apps import apps
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericStackedInline
+from django.utils.module_loading import import_string
 
 from ..settings import SEO_HTML_ADMIN_WIDGET
 
@@ -57,11 +58,11 @@ def get_html_field_widget():
 
     if SEO_HTML_ADMIN_WIDGET:
         try:
-            custom_widget = getattr(
-                import_module(SEO_HTML_ADMIN_WIDGET['widget_path']),
-                SEO_HTML_ADMIN_WIDGET['widget']
+            custom_widget = import_string(
+                f"{SEO_HTML_ADMIN_WIDGET['widget_path']}."
+                f"{SEO_HTML_ADMIN_WIDGET['widget']}"
             )
-        except (ImportError, KeyError):
+        except ImportError:
             return default_widget
         else:
             return custom_widget()
