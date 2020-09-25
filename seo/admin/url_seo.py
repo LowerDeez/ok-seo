@@ -24,15 +24,18 @@ class UrlSeoAdmin(
     list_display = [
         'url',
         'title',
+        'match_type',
         'index',
         'follow',
         'is_default'
     ]
     list_editable = [
+        'match_type',
         'index',
         'follow'
     ]
     list_filter = [
+        'match_type',
         'index',
         'follow'
     ]
