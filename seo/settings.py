@@ -28,8 +28,6 @@ __all__ = (
 
     'SEO_USE_URL_SEO',
 
-    'SEO_USE_URL_FULL_PATH',
-
     'SEO_DEBUG_MODE',
 
     'SEO_IMAGE_STORAGE',
@@ -91,12 +89,6 @@ SEO_HTML_ADMIN_WIDGET = getattr(
 )
 
 SEO_USE_URL_SEO = getattr(django_settings, 'SEO_USE_URL_SEO', False)
-
-SEO_USE_URL_FULL_PATH = getattr(
-    django_settings,
-    'SEO_USE_URL_FULL_PATH',
-    False
-)
 
 SEO_DEBUG_MODE = getattr(django_settings, 'SEO_DEBUG_MODE', True)
 

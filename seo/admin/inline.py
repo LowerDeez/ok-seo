@@ -18,8 +18,8 @@ class ModelInstanceSeoInline(
     model = ModelInstanceSeo
     max_num = 1
     verbose_name = pgettext_lazy(
-        "Model instance seo admin inline", "Seo"
+        "ok:seo", "Seo"
     )
     verbose_name_plural = pgettext_lazy(
-        "Model instance seo admin inline", "Seo"
+        "ok:seo", "Seo"
     )

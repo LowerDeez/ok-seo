@@ -46,90 +46,90 @@ class BaseSeoModel(models.Model):
         bottom_text (TextField): text field for bottom part of the page
     """
     object_type = models.CharField(
-        pgettext_lazy('Base seo model', 'Open graph type'),
+        pgettext_lazy('ok:seo', 'Open graph type'),
         max_length=40,
         blank=True,
         choices=SEO_OG_TYPES,
         default=DEFAULT_OBJECT_TYPES[0][0]
     )
     twitter_type = models.CharField(
-        pgettext_lazy('Base seo model', 'Twitter type'),
+        pgettext_lazy('ok:seo', 'Twitter type'),
         max_length=40,
         blank=True,
         choices=SEO_TWITTER_TYPES,
         default=DEFAULT_TWITTER_TYPES[0][0]
     )
     index = models.CharField(
-        pgettext_lazy('Base seo model', 'Index robots value'),
+        pgettext_lazy('ok:seo', 'Index robots value'),
         max_length=15,
         blank=True,
         choices=INDEX_CHOICES,
         default=INDEX_CHOICES[0][0]
     )
     follow = models.CharField(
-        pgettext_lazy('Base seo model', 'Follow robots value'),
+        pgettext_lazy('ok:seo', 'Follow robots value'),
         max_length=15,
         blank=True,
         choices=FOLLOW_CHOICES,
         default=FOLLOW_CHOICES[0][0]
     )
     canonical = models.CharField(
-        pgettext_lazy('Base seo model', 'Canonical'),
+        pgettext_lazy('ok:seo', 'Canonical'),
         max_length=255,
         blank=True
     )
     title = models.CharField(
-        pgettext_lazy('Base seo model', 'Title'),
+        pgettext_lazy('ok:seo', 'Title'),
         max_length=255,
         blank=True
     )
     og_title = models.CharField(
-        pgettext_lazy('Base seo model', 'OpenGraph Title'),
+        pgettext_lazy('ok:seo', 'OpenGraph Title'),
         max_length=255,
         blank=True
     )
     keywords = models.TextField(
-        pgettext_lazy('Base seo model', 'Keywords'),
+        pgettext_lazy('ok:seo', 'Keywords'),
         blank=True,
     )
     description = models.TextField(
-        pgettext_lazy('Base seo model', 'Description'),
+        pgettext_lazy('ok:seo', 'Description'),
         blank=True,
     )
     og_description = models.TextField(
-        pgettext_lazy('Base seo model', 'OpenGraph Description'),
+        pgettext_lazy('ok:seo', 'OpenGraph Description'),
         blank=True,
     )
     image = models.ImageField(
-        pgettext_lazy('Base seo model', 'Image'),
+        pgettext_lazy('ok:seo', 'Image'),
         upload_to=image_upload_to,
         blank=True, null=True,
         storage=image_storage(),
         validators=[FileExtensionValidator(SEO_IMAGE_EXTENSIONS)]
     )
     width = models.PositiveIntegerField(
-        pgettext_lazy('Base seo model', 'Image width'),
+        pgettext_lazy('ok:seo', 'Image width'),
         default=SEO_IMAGE_WIDTH
     )
     height = models.PositiveIntegerField(
-        pgettext_lazy('Base seo model', 'Image height'),
+        pgettext_lazy('ok:seo', 'Image height'),
         default=SEO_IMAGE_HEIGHT
     )
     alt = models.CharField(
-        pgettext_lazy('Base seo model', 'Image alt text'),
+        pgettext_lazy('ok:seo', 'Image alt text'),
         max_length=255,
         blank=True
     )
     h1 = models.CharField(
-        pgettext_lazy('Base seo model', 'H1 title'),
+        pgettext_lazy('ok:seo', 'H1 title'),
         max_length=255,
         blank=True
     )
     seo_text = models.TextField(
-        pgettext_lazy('Base seo model', 'Seo text'),
+        pgettext_lazy('ok:seo', 'Seo text'),
         blank=True,
         help_text=pgettext_lazy(
-            'Base seo model',
+            'ok:seo',
             'Can be useful for some static pages '
             'or some objects (like product category).'
         ),

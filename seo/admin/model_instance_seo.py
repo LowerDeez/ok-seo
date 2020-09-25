@@ -27,7 +27,7 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
                 'content_object_link',
             )
         }),
-        (pgettext_lazy('Model Instance seo admin', 'Meta'), {
+        (pgettext_lazy('ok:seo', 'Meta'), {
             'fields': base_seo_fields,
         }),
     )
@@ -72,7 +72,7 @@ class ModelInstanceSeoAdmin(AdminRichTextFieldMixin, get_admin_base_class()):
             )
         return '-'
     content_object_link.short_description = pgettext_lazy(
-        'Model instance seo admin',
+        'ok:seo',
         'Content Object'
     )
 

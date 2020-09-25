@@ -8,7 +8,7 @@ from django.utils.text import slugify
 from django.utils.translation import to_locale, get_language
 from django.utils.translation.trans_real import language_code_prefix_re
 
-from .settings import SEO_USE_URL_FULL_PATH, SEO_MODELS
+from .settings import SEO_MODELS
 
 if TYPE_CHECKING:
     from django.db.models import Model
@@ -50,16 +50,12 @@ def admin_change_url(obj: 'Model') -> str:
 
 
 def get_path_from_request(
-        request: 'HttpRequest',
-        full_path: bool = SEO_USE_URL_FULL_PATH
+        request: 'HttpRequest'
 ) -> str:
     """
     Return current path from request, excluding language code
     """
-    if full_path:
-        path = request.get_full_path()
-    else:
-        path = request.path
+    path = request.get_full_path()
 
     regex_match = language_code_prefix_re.match(path)
 

@@ -4,10 +4,11 @@ from django.db import models
 from django.utils.translation import pgettext_lazy
 
 from .base import BaseSeoModel
+from ..const import (
+    MATCH_EXACT,
+    MATCH_TYPE_CHOICES
+)
 from ..mixins.models import SeoTagsMixin
-from .. import settings
-
-SEO_VIEWS_CHOICES = settings.SEO_VIEWS_CHOICES
 
 __all__ = (
     'UrlSeo',
@@ -22,26 +23,32 @@ class UrlSeo(SeoTagsMixin, BaseSeoModel):
         url (CharField): url
         is_default (BooleanField): set the instance as default for all urls
     """
-
     url = models.CharField(
-        pgettext_lazy("Url seo model", "Url"),
+        pgettext_lazy("ok:seo", "Url"),
         max_length=255,
         unique=True,
         db_index=True
     )
+    match_type = models.CharField(
+        pgettext_lazy('ok:seo', 'Match type'),
+        max_length=40,
+        blank=True,
+        choices=MATCH_TYPE_CHOICES,
+        default=MATCH_EXACT
+    )
     is_default = models.BooleanField(
-        pgettext_lazy("Url seo model", "Is default"),
+        pgettext_lazy("ok:seo", "Is default"),
         default=False,
         help_text=pgettext_lazy(
-            "Url seo model",
+            "ok:seo",
             "Default instance for all pages."
         ),
     )
     path = property(lambda self: urlparse(self.url).path)
 
     class Meta:
-        verbose_name = pgettext_lazy("Url seo model", "Url seo")
-        verbose_name_plural = pgettext_lazy("Url seo model", "Url seo")
+        verbose_name = pgettext_lazy("ok:seo", "Url seo")
+        verbose_name_plural = pgettext_lazy("ok:seo", "Url seo")
 
     def __str__(self) -> str:
         return self.title

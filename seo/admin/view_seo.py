@@ -45,7 +45,7 @@ class ViewSeoAdmin(
         (None, {
             'fields': ('view', )
         }),
-        (pgettext_lazy('View seo admin', 'Meta'), {
+        (pgettext_lazy('ok:seo', 'Meta'), {
             'fields': base_seo_fields,
         }),
     )

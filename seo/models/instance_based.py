@@ -27,9 +27,9 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
     # The mandatory fields for generic relation
     content_type = models.ForeignKey(
         ContentType,
-        verbose_name=pgettext_lazy("Model instance seo model", "Content Type"),
+        verbose_name=pgettext_lazy("ok:seo", "Content Type"),
         help_text=pgettext_lazy(
-            "Model instance seo model",
+            "ok:seo",
             "Please select the type (model) "
             "for the relation, you want to build."
         ),
@@ -37,10 +37,10 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
         on_delete=models.CASCADE
     )
     object_id = models.CharField(
-        pgettext_lazy("Model instance seo model", "Object Primary Key"),
+        pgettext_lazy("ok:seo", "Object Primary Key"),
         max_length=255,
         help_text=pgettext_lazy(
-            "Model instance seo model",
+            "ok:seo",
             "Please enter the ID of the related object."
         ),
     )
@@ -50,11 +50,11 @@ class ModelInstanceSeo(SeoTagsMixin, BaseSeoModel):
 
     class Meta:
         verbose_name = pgettext_lazy(
-            "Model instance seo model",
+            "ok:seo",
             "Model instance seo"
         )
         verbose_name_plural = pgettext_lazy(
-            "Model instance seo model",
+            "ok:seo",
             "Model instance seo"
         )
 

@@ -48,10 +48,11 @@ class UrlSeoAdmin(
         (None, {
             'fields': (
                 'url',
+                'match_type',
                 'is_default'
             )
         }),
-        (pgettext_lazy('Url seo admin', 'Meta'), {
+        (pgettext_lazy('ok:seo', 'Meta'), {
             'fields': base_seo_fields,
         }),
     )
