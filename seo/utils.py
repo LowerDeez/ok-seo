@@ -1,6 +1,7 @@
 from datetime import datetime
 from locale import locale_alias
 from typing import Dict, Tuple, Union, List, TYPE_CHECKING
+from urllib.parse import unquote
 
 from django.conf import settings
 from django.urls import reverse
@@ -55,7 +56,7 @@ def get_path_from_request(
     """
     Return current path from request, excluding language code
     """
-    path = request.get_full_path()
+    path = unquote(request.get_full_path())
 
     regex_match = language_code_prefix_re.match(path)
 
