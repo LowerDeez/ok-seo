@@ -3,6 +3,7 @@ from locale import locale_alias
 from typing import Dict, Tuple, Union, List, TYPE_CHECKING
 from urllib.parse import unquote
 
+from django import urls
 from django.conf import settings
 from django.urls import reverse
 from django.utils.text import slugify
@@ -124,3 +125,21 @@ def get_i18n_context() -> Dict[str, Union[Tuple[str, str], str]]:
         context['LANGUAGE_CODE'] = settings.LANGUAGE_CODE
 
     return context
+
+
+def get_alternate_links_context(context: Dict):
+    current_language = get_language()
+    url = context['request'].build_absolute_uri()
+    context.update(
+        {
+            'alternate_links': [
+                {
+                    'hreflang': (
+                        'x-default' if current_language == language else language
+                    ),
+                    'href': urls.translate_url(url, language)
+                }
+                for language in settings.LANGUAGES
+            ]
+        }
+    )
