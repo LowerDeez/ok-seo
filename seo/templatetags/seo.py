@@ -1,4 +1,5 @@
 from typing import Any, Dict, Optional, TYPE_CHECKING
+from urllib.parse import unquote
 
 from django import urls
 from django.contrib.sites.shortcuts import get_current_site
@@ -59,5 +60,5 @@ def translate_url(
     Usage:
         {% translate_url 'en' %}
     """
-    url = context['request'].build_absolute_uri()
+    url = unquote(context['request'].build_absolute_uri())
     return urls.translate_url(url, language)

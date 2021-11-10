@@ -1,4 +1,5 @@
 from typing import Any, Dict, TYPE_CHECKING
+from urllib.parse import unquote
 
 from django import urls
 from django.apps import apps
@@ -61,5 +62,5 @@ if apps.is_installed('django_jinja'):
     def jinja_translate_url(
             context: Dict[str, Any], language: str
     ) -> str:
-        url = context['request'].build_absolute_uri()
+        url = unquote(context['request'].build_absolute_uri())
         return urls.translate_url(url, language)
