@@ -1,5 +1,4 @@
 from typing import Any, Dict, TYPE_CHECKING
-from urllib.parse import unquote
 
 from django import urls
 from django.apps import apps
@@ -27,7 +26,7 @@ if apps.is_installed('django_jinja'):
 
     @library.global_function
     @library.render_with("seo/jinja/seo.jinja")
-    @jinja2.contextfunction
+    @jinja2.pass_context
     def get_jinja_seo_data(
             context: Dict[str, Any],
             seo: 'BaseSeoModel',
@@ -58,9 +57,9 @@ if apps.is_installed('django_jinja'):
 
 
     @library.global_function
-    @jinja2.contextfunction
+    @jinja2.pass_context
     def jinja_translate_url(
             context: Dict[str, Any], language: str
     ) -> str:
-        url = unquote(context['request'].build_absolute_uri())
+        url = context['request'].build_absolute_uri()
         return urls.translate_url(url, language)

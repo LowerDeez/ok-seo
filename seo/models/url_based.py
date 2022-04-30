@@ -53,6 +53,9 @@ class UrlSeo(SeoTagsMixin, BaseSeoModel):
     def __str__(self) -> str:
         return self.title
 
+    def get_absolute_url(self):
+        return self.url
+
     def save(self, *args, **kwargs):
         if self.is_default:
             (

@@ -1,9 +1,7 @@
 from datetime import datetime
 from locale import locale_alias
 from typing import Dict, Tuple, Union, List, TYPE_CHECKING
-from urllib.parse import unquote
 
-from django import urls
 from django.conf import settings
 from django.urls import reverse
 from django.utils.text import slugify
@@ -57,7 +55,7 @@ def get_path_from_request(
     """
     Return current path from request, excluding language code
     """
-    path = unquote(request.get_full_path())
+    path = request.get_full_path()
 
     regex_match = language_code_prefix_re.match(path)
 
@@ -67,8 +65,10 @@ def get_path_from_request(
             language_tuple[0] for
             language_tuple in settings.LANGUAGES
         ]
+
         if lang_code in languages:
             path = path[1 + len(lang_code):]
+
             if not path.startswith('/'):
                 path = '/' + path
 
@@ -102,13 +102,17 @@ def get_locale(request: 'HttpRequest') -> str:
         language = request.LANGUAGE_CODE
     else:
         language = get_language()
+
     code = locale_alias.get(language)
+
     if code and '.' in code:
         locale_tuple = tuple(code.split('.')[:2])
+
         try:
             return locale_tuple[0]
         except IndexError:
             pass
+
     return to_locale(language)
 
 
@@ -125,21 +129,3 @@ def get_i18n_context() -> Dict[str, Union[Tuple[str, str], str]]:
         context['LANGUAGE_CODE'] = settings.LANGUAGE_CODE
 
     return context
-
-
-def get_alternate_links_context(context: Dict):
-    current_language = get_language()
-    url = context['request'].build_absolute_uri()
-    context.update(
-        {
-            'alternate_links': [
-                {
-                    'hreflang': (
-                        'x-default' if current_language == language else language
-                    ),
-                    'href': urls.translate_url(url, language)
-                }
-                for language in settings.LANGUAGES
-            ]
-        }
-    )

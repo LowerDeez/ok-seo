@@ -8,6 +8,7 @@ __all__ = (
     'FOLLOW_CHOICES',
     'MATCH_EXACT',
     'MATCH_PREFIX',
+    'MATCH_REGEX',
     'MATCH_TYPE_CHOICES'
 )
 
@@ -39,8 +40,10 @@ FOLLOW_CHOICES = (
 
 MATCH_EXACT = 'exact'
 MATCH_PREFIX = 'prefix'
+MATCH_REGEX = 'regex'
 
 MATCH_TYPE_CHOICES = (
     (MATCH_EXACT, pgettext_lazy('ok:seo', 'Exact')),
     (MATCH_PREFIX, pgettext_lazy('ok:seo', 'Prefix')),
+    (MATCH_REGEX, pgettext_lazy('ok:seo', 'Regex')),
 )

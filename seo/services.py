@@ -1,8 +1,9 @@
+import re
 from typing import Optional, TYPE_CHECKING
 
 from django.db.models import Case, Q, Value, When, SmallIntegerField
 
-from .const import MATCH_EXACT, MATCH_PREFIX
+from .const import MATCH_EXACT, MATCH_PREFIX, MATCH_REGEX
 from .models.url_based import UrlSeo
 from .utils import get_path_from_request
 
@@ -57,6 +58,8 @@ def get_url_seo_by_match_type(request: 'HttpRequest') -> Optional['UrlSeo']:
             (Q(match_type=MATCH_EXACT) & Q(url__iexact=path)) |
             # filter url by prefix match
             Q(match_type=MATCH_PREFIX) |
+            # filter url by regex match
+            Q(match_type=MATCH_REGEX) |
             # filter default as backup value
             Q(is_default=True)
         )
@@ -67,9 +70,11 @@ def get_url_seo_by_match_type(request: 'HttpRequest') -> Optional['UrlSeo']:
                 When(match_type=MATCH_EXACT, url__iexact=path, then=Value(1)),
                 # second - prefix match
                 When(match_type=MATCH_PREFIX, then=Value(2)),
-                # third - default seo
-                When(is_default=True, then=Value(3)),
-                default=Value(4),
+                # third - regex match
+                When(match_type=MATCH_REGEX, then=Value(3)),
+                # fourth - default seo
+                When(is_default=True, then=Value(4)),
+                default=Value(5),
                 output_field=SmallIntegerField()
             )
         )
@@ -88,5 +93,17 @@ def get_url_seo_by_match_type(request: 'HttpRequest') -> Optional['UrlSeo']:
         # check prefix match if exact match wasn't found
         elif match_type == MATCH_PREFIX and path.startswith(url):
             return url_seo
+
+        # check regex match
+        elif match_type == MATCH_REGEX:
+            try:
+                url_re = re.compile(url, re.IGNORECASE)
+            except re.error:
+                continue
+
+            url_match = re.match(url_re, path)
+
+            if url_match:
+                return url_seo
 
     return objects.first()

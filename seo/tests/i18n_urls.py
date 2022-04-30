@@ -1,7 +1,7 @@
 from django.conf.urls.i18n import i18n_patterns
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin
 
 urlpatterns = i18n_patterns(
-    url(r"^admin/", admin.site.urls),
+    re_path(r"^admin/", admin.site.urls),
 )

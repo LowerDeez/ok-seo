@@ -1,11 +1,16 @@
 <!--Base-->
 {% if USE_I18N %}
-    {% for item in alternate_links %}
+    {% for language_code, language_name in LANGUAGES %}
         <link
             rel="alternate"
-            hreflang="{{ item.hreflang }}"
-            href="{{ item.href }}">
+            hreflang="{{ language_code }}"
+            href="{{ jinja_translate_url(language_code) }}">
     {% endfor %}
+    <link
+        rel="alternate"
+        hreflang="x-default"
+        href="{{ jinja_translate_url(LANGUAGE_CODE) }}" />
+
 {% endif %}
 
 {% if robots %}
