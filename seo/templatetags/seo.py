@@ -5,6 +5,9 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.db.models import Model
 from django.template import Library
 from django.utils.translation import to_locale, get_language
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 
 from ..settings import SEO_DEBUG_MODE
 from ..utils import get_i18n_context
@@ -31,6 +34,16 @@ def get_seo_data(
     Renders meta data for given obj, that can be
     some instance which inherits SeoTagsMixin mixin
     """
+    for seo_model in settings.SEO_MODELS:
+        app_label, model = seo_model.split(".")
+        try:
+            content_type = ContentType.objects.get(app_label=app_label, model=model.lower())
+            if hasattr(seo, "id") and isinstance(seo, content_type.model_class()):
+                obj = seo
+                seo =  content_type.modelinstanceseo_set.get(id=seo.id)
+                break
+        except ObjectDoesNotExist:
+            continue
     if isinstance(seo, SeoTagsMixin):
         template_context = seo.as_meta(
             request=context.request,
