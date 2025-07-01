@@ -1,6 +1,6 @@
 from datetime import datetime
 from locale import locale_alias
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, List, Tuple, Union
 
 from django.conf import settings
 from django.urls import reverse
