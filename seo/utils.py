@@ -1,11 +1,12 @@
 from datetime import datetime
 from locale import locale_alias
-from typing import Dict, Tuple, Union, List, TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, List, Tuple, Union
 
 from django.conf import settings
 from django.urls import reverse
+from django.utils.module_loading import import_string
 from django.utils.text import slugify
-from django.utils.translation import to_locale, get_language
+from django.utils.translation import get_language, to_locale
 from django.utils.translation.trans_real import language_code_prefix_re
 
 from .settings import SEO_MODELS
@@ -20,7 +21,8 @@ __all__ = (
     'get_path_from_request',
     'get_seo_models_filters',
     'get_locale',
-    'get_i18n_context'
+    'get_i18n_context',
+    'get_storage_class',
 )
 
 
@@ -129,3 +131,16 @@ def get_i18n_context() -> Dict[str, Union[Tuple[str, str], str]]:
         context['LANGUAGE_CODE'] = settings.LANGUAGE_CODE
 
     return context
+
+
+def get_storage_class(import_path=None):
+    """Imports and returns a storage class from the given path.
+
+    Args:
+        import_path (str or None): Dotted path to storage class.
+         If None, uses DEFAULT_FILE_STORAGE.
+
+    Returns:
+        type: Storage class.
+    """
+    return import_string(import_path or settings.DEFAULT_FILE_STORAGE)

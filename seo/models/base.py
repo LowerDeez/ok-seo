@@ -1,4 +1,3 @@
-from django.core.files.storage import get_storage_class
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import pgettext_lazy
@@ -17,7 +16,7 @@ from ..settings import (
     SEO_IMAGE_HEIGHT,
     SEO_IMAGE_STORAGE
 )
-from ..utils import image_upload_to
+from ..utils import image_upload_to, get_storage_class
 
 __all__ = (
     'BaseSeoModel',
